@@ -4,28 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed54d11b-7fa3-4bcc-97fa-947014f7ca1c" name="Changes" comment="First commit">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="ed54d11b-7fa3-4bcc-97fa-947014f7ca1c" name="Changes" comment="Second commit">
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GraficaGPOI.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Messaggi.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Query_Inserimento.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GestionaleITIS/stocker/storage/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionaleITIS/stocker/storage/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stocker/storage/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/stocker/storage/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stocker/storage/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/stocker/storage/Main.java" afterDir="false" />
     </list>
-    <list id="10072e74-9989-4931-8e0e-2090c71aa7ad" name="Changes by dinom" comment="" />
-    <list id="30ee475a-c563-4477-a5e9-02e6ba1fdcc4" name="Changes by Simone" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2L8uylrxshrEd6VOdMAuwpx45v7" />
+  <component name="ProjectLevelVcsManager">
+    <OptionsSetting value="false" id="Update" />
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -34,6 +45,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "node.js.detected.package.eslint": "true",
@@ -45,6 +57,9 @@
   "keyToStringList": {
     "DatabaseDriversLRU": [
       "postgresql"
+    ],
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "TEXT"
     ]
   }
 }]]></component>
@@ -76,7 +91,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675265290129</updated>
-      <workItem from="1675265291324" duration="3432000" />
+      <workItem from="1675265291324" duration="3867000" />
+      <workItem from="1675356885619" duration="1096000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1675265783452</created>
@@ -92,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675265859544</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Second commit">
+      <created>1675268961913</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1675268961913</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,6 +123,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit" />
+    <MESSAGE value="Second commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Second commit" />
   </component>
 </project>
