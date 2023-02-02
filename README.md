@@ -17,9 +17,10 @@
 
 
 # Storico delle variazioni
-| Versione        | Data emissione  | Parte modificata    |
-|-----------------|-----------------|---------------------|
-| Bozza           | 19 gennaio 2023 | Creazione documento |
+| Versione        | Data emissione   | Parte modificata    |
+|-----------------|----------------- |---------------------|
+| Bozza           | 19 gennaio 2023  | Creazione documento |
+| Bozza(2)        | 02 febbraio 2023 | Responsabilità      |
 
 
 # Librerie e API utilizzate
