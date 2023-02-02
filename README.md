@@ -34,7 +34,7 @@
 
 # Stories e Features
 * **Creazione GUI: -> Priorità 2 -> 41P (tot)**
-  - Inserimento accesso utente -> **Priorità 8** -> 2P
+  - Inserimento accesso utente -> *Priorità 8* -> 2P
   - Inserimento caselle campi -> **Priorità 13** -> 2P
   - Pulsanti di accesso -> **Priorità 20** -> 2P
   - Schermata di benvenuto -> **Priorità 100** -> 5P
