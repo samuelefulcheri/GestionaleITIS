@@ -2,18 +2,18 @@
 ### Progetto GPOI
 
 # Responsabilità
-| Funzione                                     | Nome                   | Data            |
-|----------------------------------------------|------------------------|-----------------|
-| Redatto, controllato, approvato ed emesso da | Simone Giletta         | 19 gennaio 2023 |  
-|                                              | Theodor Giannini       | 19 gennaio 2023 |  
-|                                              | Konstantinos Moldovanu | 19 gennaio 2023 |  
-|                                              | Giacomo Gonella        | 19 gennaio 2023 |  
-|                                              | Samuele Fulcheri       | 19 gennaio 2023 |
-| Inizio Progetto                              | Simone Giletta         | 02 febbraio 2023|
-|                                              | Theodor Giannini       | 02 febbraio 2023| 
-|                                              | Konstantinos Moldovanu | 02 febbraio 2023|  
-|                                              | Giacomo Gonella        | 02 febbraio 2023|  
-|                                              | Samuele Fulcheri       | 02 febbraio 2023|
+| Funzione                                     | Nome                   | Data             |
+|----------------------------------------------|------------------------|----------------- |
+| Redatto, controllato, approvato ed emesso da | Simone Giletta         | 19 gennaio 2023  |  
+|                                              | Theodor Giannini       | 19 gennaio 2023  |  
+|                                              | Konstantinos Moldovanu | 19 gennaio 2023  |  
+|                                              | Giacomo Gonella        | 19 gennaio 2023  |  
+|                                              | Samuele Fulcheri       | 19 gennaio 2023  |
+| Inizio Progetto                              | Simone Giletta         | 02 febbraio 2023 |
+|                                              | Theodor Giannini       | 02 febbraio 2023 | 
+|                                              | Konstantinos Moldovanu | 02 febbraio 2023 |  
+|                                              | Giacomo Gonella        | 02 febbraio 2023 |  
+|                                              | Samuele Fulcheri       | 02 febbraio 2023 |
 
 
 # Storico delle variazioni
