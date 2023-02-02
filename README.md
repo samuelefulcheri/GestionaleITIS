@@ -1,4 +1,4 @@
-## GESTIONALE ITIS
+# GESTIONALE ITIS
 ### Progetto GPOI
 
 # Responsabilità
