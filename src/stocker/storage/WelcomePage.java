@@ -1,37 +1,76 @@
 package stocker.storage;
+import stocker.storage.component.SSButton;
+import stocker.storage.component.SSPanel;
+import stocker.storage.component.SSTextArea;
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
 public class WelcomePage extends JPanel {
     public WelcomePage() {
-        Border bordo = BorderFactory.createLineBorder(new Color(32, 34, 37));
         setLayout(new GridBagLayout());
-        JTextField textField = new JTextField(" ");
-        textField.setFont(new Font("ArialBold", Font.PLAIN, 18));
-        JButton pulsante = new JButton("Invia");
-        pulsante.addActionListener(e -> azionePulsante());
+        setBackground(Windows.grigio);
+
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.anchor = GridBagConstraints.LINE_START;
-        gbc.weightx = 0.95;
+
+        SSPanel buttonsPanel = new SSPanel();
+        gbc.weightx = 0.2;
         gbc.weighty = 1;
-        gbc.insets = new Insets(0, 0, 0, 5);
+        gbc.insets.right = 1;
         gbc.fill = 1;
-        textField.setBackground(new Color(64, 68, 75));
-        textField.setForeground(new Color(255, 255, 255));
-        pulsante.setBackground(new Color(64, 68, 75));
-        pulsante.setForeground(new Color(255, 255, 255));
-        pulsante.setBorder(bordo);
-        textField.setBorder(bordo);
-        add(textField, gbc);
+        add(buttonsPanel, gbc);
+
+        SSPanel componentPanel = new SSPanel();
+        componentPanel.setBackground(Windows.grigioChiaro);
+
         gbc.gridx = 1;
+        gbc.weightx = 0.8;
+        gbc.insets.right = 0;
+        add(componentPanel, gbc);
+
+        SSButton storageButton = new SSButton("Magazzino");
+        gbc = new GridBagConstraints();
         gbc.weightx = 0.05;
-        gbc.insets = new Insets(0, 5, 0, 0);
-        gbc.anchor = GridBagConstraints.LINE_END;
-        add(pulsante, gbc);
-    }
+        gbc.weighty = 0.1;
+        gbc.insets.set(15, 15, 15, 15);
+        gbc.fill = 1;
+        buttonsPanel.add(storageButton, gbc);
 
-    private void azionePulsante() {
+        SSButton bottone2 = new SSButton("Secondo bottone");
+        gbc.gridy = 1;
+        gbc.insets.set(0, 15, 15, 15);
+        buttonsPanel.add(bottone2, gbc);
 
+        SSButton bottone3 = new SSButton("Terzo bottone");
+        gbc.gridy = 2;
+        gbc.insets.set(0, 15, 15, 15);
+        buttonsPanel.add(bottone3, gbc);
+
+        JPanel vuoto = new JPanel();
+        vuoto.setBackground(Windows.grigio);
+
+        gbc.gridy = 3;
+        gbc.weighty = 0.75;
+        gbc.insets.set(0, 0, 0, 0);
+        buttonsPanel.add(vuoto, gbc);
+
+        SSButton errorsButton = new SSButton("Errors");
+        errorsButton.setForeground(Color.red);
+        gbc.gridy = 4;
+        gbc.weighty = 0.05;
+        gbc.insets.set(0, 15, 15, 15);
+        buttonsPanel.add(errorsButton, gbc);
+
+        SSButton notificationsButton = new SSButton("Notifiche");
+        gbc.gridy = 5;
+        gbc.insets.set(0, 15, 15, 15);
+        buttonsPanel.add(notificationsButton, gbc);
+
+        SSTextArea welcome = new SSTextArea("Welcome!");
+        gbc = new GridBagConstraints();
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        gbc.insets.set(150, 50, 0, 0);
+        gbc.fill = 1;
+        componentPanel.add(welcome, gbc);
     }
 }
