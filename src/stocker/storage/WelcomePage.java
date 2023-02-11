@@ -13,7 +13,9 @@ public class WelcomePage extends JPanel {
         GridBagConstraints gbc = new GridBagConstraints();
 
         SSPanel buttonsPanel = new SSPanel();
-        gbc.weightx = 0.2;
+        buttonsPanel.setBorder(null);
+
+        gbc.weightx = 0.15;
         gbc.weighty = 1;
         gbc.insets.right = 1;
         gbc.fill = 1;
@@ -23,14 +25,14 @@ public class WelcomePage extends JPanel {
         componentPanel.setBackground(Windows.grigioChiaro);
 
         gbc.gridx = 1;
-        gbc.weightx = 0.8;
+        gbc.weightx = 0.85;
         gbc.insets.right = 0;
         add(componentPanel, gbc);
 
         SSButton storageButton = new SSButton("Magazzino");
         gbc = new GridBagConstraints();
-        gbc.weightx = 0.05;
-        gbc.weighty = 0.1;
+        gbc.weightx = 1;
+        gbc.weighty = 0.05;
         gbc.insets.set(15, 15, 15, 15);
         gbc.fill = 1;
         buttonsPanel.add(storageButton, gbc);
@@ -42,7 +44,6 @@ public class WelcomePage extends JPanel {
 
         SSButton bottone3 = new SSButton("Terzo bottone");
         gbc.gridy = 2;
-        gbc.insets.set(0, 15, 15, 15);
         buttonsPanel.add(bottone3, gbc);
 
         JPanel vuoto = new JPanel();
@@ -62,7 +63,6 @@ public class WelcomePage extends JPanel {
 
         SSButton notificationsButton = new SSButton("Notifiche");
         gbc.gridy = 5;
-        gbc.insets.set(0, 15, 15, 15);
         buttonsPanel.add(notificationsButton, gbc);
 
         SSTextArea welcome = new SSTextArea("Welcome!");
