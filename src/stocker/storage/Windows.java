@@ -2,7 +2,6 @@ package stocker.storage;
 import stocker.storage.component.SSPanel;
 import stocker.storage.component.SSScrollPane;
 import stocker.storage.pages.*;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -89,7 +88,7 @@ public class Windows extends JFrame {
         JComponent component;
 
         try{
-            switch (previousStatus) {
+            switch(previousStatus) {
                 case 0 -> componentPanel.remove(welcomePage);
                 case 1 -> componentPanel.remove(storagePage);
                 case 2 -> componentPanel.remove(secondaPagina);
@@ -105,6 +104,7 @@ public class Windows extends JFrame {
             System.out.println("Errore");
             System.out.println("previousPage: " + previousStatus);
             System.out.println("currentPage: " + currentStatus);
+            return;
         }
 
         switch(currentStatus) {
