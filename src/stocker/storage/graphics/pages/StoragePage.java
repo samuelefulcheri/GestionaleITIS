@@ -1,7 +1,7 @@
-package stocker.storage.pages;
-import stocker.storage.Windows;
-import stocker.storage.component.SSPanel;
-import stocker.storage.component.SSTextArea;
+package stocker.storage.graphics.pages;
+import stocker.storage.graphics.Windows;
+import stocker.storage.graphics.component.SSPanel;
+import stocker.storage.graphics.component.SSTextArea;
 import java.awt.*;
 
 public class StoragePage extends SSPanel {

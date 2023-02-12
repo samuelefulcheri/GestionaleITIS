@@ -1,7 +1,8 @@
-package stocker.storage;
-import stocker.storage.component.SSPanel;
-import stocker.storage.component.SSScrollPane;
-import stocker.storage.pages.*;
+package stocker.storage.graphics;
+import stocker.storage.Main;
+import stocker.storage.graphics.component.SSPanel;
+import stocker.storage.graphics.component.SSScrollPane;
+import stocker.storage.graphics.pages.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;

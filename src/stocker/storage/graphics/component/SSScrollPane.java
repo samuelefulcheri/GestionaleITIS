@@ -1,5 +1,5 @@
-package stocker.storage.component;
-import stocker.storage.Windows;
+package stocker.storage.graphics.component;
+import stocker.storage.graphics.Windows;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;

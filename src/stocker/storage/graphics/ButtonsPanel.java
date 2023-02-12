@@ -1,6 +1,6 @@
-package stocker.storage;
-import stocker.storage.component.SSButton;
-import stocker.storage.component.SSPanel;
+package stocker.storage.graphics;
+import stocker.storage.graphics.component.SSButton;
+import stocker.storage.graphics.component.SSPanel;
 import javax.swing.*;
 import java.awt.*;
 
