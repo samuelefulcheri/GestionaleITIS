@@ -5,9 +5,9 @@ import javax.swing.*;
 public class SSTextArea extends JTextArea {
     public SSTextArea() {
         super();
-        setBackground(Windows.grigioChiaro);
-        setForeground(Windows.bianco);
-        setFont(Windows.fontTitoli);
+        setBackground(Windows.GRIGIO_CHIARO);
+        setForeground(Windows.BIANCO);
+        setFont(Windows.FONT_TITOLI);
         setEditable(false);
         setFocusable(false);
     }
