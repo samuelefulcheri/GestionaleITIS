@@ -1,4 +1,4 @@
-package stocker.storage.database;
+package stocker.storage.model;
 // import java.sql.Connection;
 // import java.sql.DriverManager;
 // import java.sql.ResultSet;
