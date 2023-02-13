@@ -85,6 +85,14 @@ public class Windows extends JFrame {
         setVisible(true);
     }
 
+    public void welcomePage() {
+        currentStatus = 1;
+        previousStatus = 0;
+        cambiaPagina();
+        currentStatus = 0;
+        cambiaPagina();
+    }
+
     public static void cambiaPagina() {
         JComponent component;
 
