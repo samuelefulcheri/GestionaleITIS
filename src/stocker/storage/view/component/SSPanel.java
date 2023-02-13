@@ -1,6 +1,5 @@
-package stocker.storage.graphics.component;
-import stocker.storage.graphics.Windows;
-
+package stocker.storage.view.component;
+import stocker.storage.view.Windows;
 import javax.swing.*;
 import java.awt.*;
 

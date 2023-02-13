@@ -1,5 +1,5 @@
-package stocker.storage.graphics.component;
-import stocker.storage.graphics.Windows;
+package stocker.storage.view.component;
+import stocker.storage.view.Windows;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
@@ -84,7 +84,7 @@ public class SSScrollPane extends JScrollPane {
         setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         verticalScrollBar.setUnitIncrement(16);
         setBorder(null);
-        verticalScrollBar.setBackground(Windows.GRIGIO_CHIARO);
-        horizontalScrollBar.setBackground(Windows.GRIGIO_CHIARO);
+        verticalScrollBar.setBackground(null);
+        horizontalScrollBar.setBackground(null);
     }
 }

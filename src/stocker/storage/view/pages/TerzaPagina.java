@@ -1,7 +1,7 @@
-package stocker.storage.graphics.pages;
-import stocker.storage.graphics.Windows;
-import stocker.storage.graphics.component.SSPanel;
-import stocker.storage.graphics.component.SSTextArea;
+package stocker.storage.view.pages;
+import stocker.storage.view.Windows;
+import stocker.storage.view.component.SSPanel;
+import stocker.storage.view.component.SSTextArea;
 import java.awt.*;
 
 public class TerzaPagina extends SSPanel {

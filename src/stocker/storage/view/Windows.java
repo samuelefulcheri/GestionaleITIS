@@ -1,8 +1,8 @@
-package stocker.storage.graphics;
+package stocker.storage.view;
 import stocker.storage.Main;
-import stocker.storage.graphics.component.SSPanel;
-import stocker.storage.graphics.component.SSScrollPane;
-import stocker.storage.graphics.pages.*;
+import stocker.storage.view.component.SSPanel;
+import stocker.storage.view.component.SSScrollPane;
+import stocker.storage.view.pages.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -21,10 +21,10 @@ public class Windows extends JFrame {
 
     public static final Border BORDO = BorderFactory.createLineBorder(Windows.GRIGIO_SCURO);
 
-
     private static SSPanel componentPanel;
-    public static int currentStatus = 0;
-    private static int previousStatus = 0;
+
+    public static int currentStatus;
+    private static int previousStatus;
 
     private static WelcomePage welcomePage;
     private static StoragePage storagePage;
@@ -47,12 +47,11 @@ public class Windows extends JFrame {
 
         gbc.weightx = 0.15;
         gbc.weighty = 1;
-        gbc.insets.set(5, 5, 5, 1);
         gbc.fill = 1;
         add(buttonsPanel, gbc);
 
         componentPanel = new SSPanel();
-        componentPanel.setBackground(Windows.GRIGIO_CHIARO);
+        componentPanel.setBorder(null);
 
         gbc.gridx = 1;
         gbc.weightx = 0.85;
@@ -65,16 +64,6 @@ public class Windows extends JFrame {
         gbc.insets.set(0, 0, 0, 0);
 
         add(scroll, gbc);
-
-        welcomePage = new WelcomePage();
-        gbc = new GridBagConstraints();
-
-        gbc.weightx = 1;
-        gbc.weighty = 1;
-        gbc.fill = 1;
-
-        componentPanel.add(welcomePage, gbc);
-
 
         try{
             BufferedImage image = ImageIO.read(new File("Icon.png"));
@@ -110,13 +99,20 @@ public class Windows extends JFrame {
                 }
             }
         }catch(Exception e) {
-            System.out.println("Errore");
-            System.out.println("previousPage: " + previousStatus);
-            System.out.println("currentPage: " + currentStatus);
-            return;
+            if(previousStatus != 0) {
+                System.out.println("Errore");
+                System.out.println("previousPage: " + previousStatus);
+                System.out.println("currentPage: " + currentStatus);
+                return;
+            }
         }
 
         switch(currentStatus) {
+            case 0 -> {
+                welcomePage = new WelcomePage();
+                component = welcomePage;
+                previousStatus = 0;
+            }
             case 1 -> {
                 storagePage = new StoragePage();
                 component = storagePage;
