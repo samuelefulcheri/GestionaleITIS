@@ -11,25 +11,24 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 public class Windows extends JFrame {
-    public static final Color GRIGIO_SCURO = new Color(32, 34, 37);
-    public static final Color GRIGIO = new Color(54, 57, 63);
-    public static final Color GRIGIO_CHIARO = new Color(64, 68, 75);
-    public static final Color BIANCO = new Color(255, 255, 255);
+    public static final Color DARK_GRAY = new Color(32, 34, 37);
+    public static final Color GRAY = new Color(54, 57, 63);
+    public static final Color LIGHT_GRAY = new Color(64, 68, 75);
 
-    public static final Font FONT_SCRITTE = new Font("ArialBold", Font.PLAIN, 18);
-    public static final Font FONT_TITOLI = new Font("ArialBold", Font.BOLD, 100);
+    public static final Font PLAIN_FONT = new Font("ArialBold", Font.PLAIN, 18);
+    public static final Font TITLE_FONT = new Font("ArialBold", Font.BOLD, 100);
 
-    public static final Border BORDO = BorderFactory.createLineBorder(Windows.GRIGIO_SCURO);
+    public static final Border SS_BORDER = BorderFactory.createLineBorder(Windows.DARK_GRAY);
 
     private static SSPanel componentPanel;
 
-    public static int currentStatus;
-    private static int previousStatus;
+    public static Pages currentStatus;
+    private static Pages previousStatus;
 
     private static WelcomePage welcomePage;
     private static StoragePage storagePage;
-    private static SecondaPagina secondaPagina;
-    private static TerzaPagina terzaPagina;
+    private static RegistrationPage registrationPage;
+    private static LoginPage loginPage;
     private static ErrorsPage errorsPage;
     private static NotificationsPage notificationsPage;
 
@@ -39,7 +38,7 @@ public class Windows extends JFrame {
         setLocationRelativeTo(null);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLayout(new GridBagLayout());
-        getContentPane().setBackground(GRIGIO);
+        getContentPane().setBackground(GRAY);
 
 
         ButtonsPanel buttonsPanel = new ButtonsPanel();
@@ -75,10 +74,11 @@ public class Windows extends JFrame {
     }
 
     public void welcomePage() {
-        currentStatus = 1;
-        previousStatus = 0;
+        // TODO: Migliorare sta cosa
+        currentStatus = Pages.STORAGE_PAGE;
+        previousStatus = Pages.WELCOME_PAGE;
         cambiaPagina();
-        currentStatus = 0;
+        currentStatus = Pages.WELCOME_PAGE;
         cambiaPagina();
     }
 
@@ -87,19 +87,19 @@ public class Windows extends JFrame {
 
         try{
             switch(previousStatus) {
-                case 0 -> componentPanel.remove(welcomePage);
-                case 1 -> componentPanel.remove(storagePage);
-                case 2 -> componentPanel.remove(secondaPagina);
-                case 3 -> componentPanel.remove(terzaPagina);
-                case 4 -> componentPanel.remove(errorsPage);
-                case 5 -> componentPanel.remove(notificationsPage);
+                case WELCOME_PAGE -> componentPanel.remove(welcomePage);
+                case STORAGE_PAGE -> componentPanel.remove(storagePage);
+                case REGISTRATION_PAGE -> componentPanel.remove(registrationPage);
+                case LOGIN_PAGE -> componentPanel.remove(loginPage);
+                case ERRORS_PAGE -> componentPanel.remove(errorsPage);
+                case NOTIFICATIONS_PAGE -> componentPanel.remove(notificationsPage);
                 default -> {
                     System.out.println("Errore: previousStatus = " + previousStatus);
                     return;
                 }
             }
         }catch(Exception e) {
-            if(previousStatus != 0) {
+            if(previousStatus != Pages.WELCOME_PAGE) {
                 System.out.println("Errore");
                 System.out.println("previousPage: " + previousStatus);
                 System.out.println("currentPage: " + currentStatus);
@@ -108,31 +108,31 @@ public class Windows extends JFrame {
         }
 
         switch(currentStatus) {
-            case 0 -> {
+            case WELCOME_PAGE -> {
                 welcomePage = new WelcomePage();
                 component = welcomePage;
-                previousStatus = 0;
+                previousStatus = Pages.WELCOME_PAGE;
             }
-            case 1 -> {
+            case STORAGE_PAGE -> {
                 storagePage = new StoragePage();
                 component = storagePage;
-                previousStatus = 1;
-            } case 2 -> {
-                secondaPagina = new SecondaPagina();
-                component = secondaPagina;
-                previousStatus = 2;
-            } case 3 -> {
-                terzaPagina = new TerzaPagina();
-                component = terzaPagina;
-                previousStatus = 3;
-            } case 4 -> {
+                previousStatus = Pages.STORAGE_PAGE;
+            } case REGISTRATION_PAGE -> {
+                registrationPage = new RegistrationPage();
+                component = registrationPage;
+                previousStatus = Pages.REGISTRATION_PAGE;
+            } case LOGIN_PAGE -> {
+                loginPage = new LoginPage();
+                component = loginPage;
+                previousStatus = Pages.LOGIN_PAGE;
+            } case ERRORS_PAGE -> {
                 errorsPage = new ErrorsPage();
                 component = errorsPage;
-                previousStatus = 4;
-            } case 5 -> {
+                previousStatus = Pages.ERRORS_PAGE;
+            } case NOTIFICATIONS_PAGE -> {
                 notificationsPage = new NotificationsPage();
                 component = notificationsPage;
-                previousStatus = 5;
+                previousStatus = Pages.NOTIFICATIONS_PAGE;
             } default -> {
                 System.out.println("Errore: currentStatus = " + currentStatus);
                 return;
@@ -148,4 +148,13 @@ public class Windows extends JFrame {
         componentPanel.add(component, gbc);
         Main.windows.setVisible(true);
     }
+}
+
+enum Pages {
+    WELCOME_PAGE,
+    STORAGE_PAGE,
+    REGISTRATION_PAGE,
+    LOGIN_PAGE,
+    ERRORS_PAGE,
+    NOTIFICATIONS_PAGE
 }

@@ -1,18 +1,13 @@
 package stocker.storage.view.component;
 import stocker.storage.Main;
 import stocker.storage.view.Windows;
-import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class SSTextArea extends JTextArea {
+public class SSTextArea extends SingleLineText {
     public SSTextArea() {
-        super();
-        setBackground(Windows.GRIGIO_CHIARO);
-        setForeground(Windows.BIANCO);
-        setFont(Windows.FONT_TITOLI);
-        setEditable(false);
-        setFocusable(false);
+        super("");
+        setFont(Windows.TITLE_FONT);
         setLineWrap(true);
         setWrapStyleWord(true);
         setAutoLineWrap();

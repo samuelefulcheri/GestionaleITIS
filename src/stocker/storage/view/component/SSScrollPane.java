@@ -49,13 +49,13 @@ class SSScrollBarUI extends BasicScrollBarUI {
 
     @Override
     protected void paintTrack(@NotNull Graphics g, JComponent c, @NotNull Rectangle trackBounds) {
-        g.setColor(Windows.GRIGIO_CHIARO);
+        g.setColor(Windows.LIGHT_GRAY);
         g.fillRect(trackBounds.x, trackBounds.y, trackBounds.width, trackBounds.height);
     }
 
     @Override
     protected void paintThumb(@NotNull Graphics g, JComponent c, @NotNull Rectangle thumbBounds) {
-        g.setColor(Windows.GRIGIO_SCURO);
+        g.setColor(Windows.DARK_GRAY);
         ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.fillRoundRect(thumbBounds.x, thumbBounds.y, thumbBounds.width, thumbBounds.height, 10, 10);
     }

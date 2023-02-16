@@ -10,8 +10,8 @@ public class ButtonsPanel extends SSPanel {
 
         SSButton storageButton = new SSButton("Magazzino");
         storageButton.addActionListener(e -> {
-            if(Windows.currentStatus != 1) {
-                Windows.currentStatus = 1;
+            if(Windows.currentStatus != Pages.STORAGE_PAGE) {
+                Windows.currentStatus = Pages.STORAGE_PAGE;
                 Windows.cambiaPagina();
             }
         });
@@ -22,10 +22,10 @@ public class ButtonsPanel extends SSPanel {
         gbc.fill = 1;
         add(storageButton, gbc);
 
-        SSButton bottone2 = new SSButton("Secondo bottone");
+        SSButton bottone2 = new SSButton("Registrati");
         bottone2.addActionListener(e -> {
-            if(Windows.currentStatus != 2) {
-                Windows.currentStatus = 2;
+            if(Windows.currentStatus != Pages.REGISTRATION_PAGE) {
+                Windows.currentStatus = Pages.REGISTRATION_PAGE;
                 Windows.cambiaPagina();
             }
         });
@@ -34,10 +34,10 @@ public class ButtonsPanel extends SSPanel {
         gbc.insets.set(0, 15, 15, 15);
         add(bottone2, gbc);
 
-        SSButton bottone3 = new SSButton("Terzo bottone");
+        SSButton bottone3 = new SSButton("Accedi");
         bottone3.addActionListener(e -> {
-            if(Windows.currentStatus != 3) {
-                Windows.currentStatus = 3;
+            if(Windows.currentStatus != Pages.LOGIN_PAGE) {
+                Windows.currentStatus = Pages.LOGIN_PAGE;
                 Windows.cambiaPagina();
             }
         });
@@ -46,7 +46,7 @@ public class ButtonsPanel extends SSPanel {
         add(bottone3, gbc);
 
         JPanel vuoto = new JPanel();
-        vuoto.setBackground(Windows.GRIGIO);
+        vuoto.setBackground(Windows.GRAY);
 
         gbc.gridy = 3;
         gbc.weighty = 0.75;
@@ -56,8 +56,8 @@ public class ButtonsPanel extends SSPanel {
         SSButton errorsButton = new SSButton("Errors");
         errorsButton.setForeground(Color.red);
         errorsButton.addActionListener(e -> {
-            if(Windows.currentStatus != 4) {
-                Windows.currentStatus = 4;
+            if(Windows.currentStatus != Pages.ERRORS_PAGE) {
+                Windows.currentStatus = Pages.ERRORS_PAGE;
                 Windows.cambiaPagina();
             }
         });
@@ -69,8 +69,8 @@ public class ButtonsPanel extends SSPanel {
 
         SSButton notificationsButton = new SSButton("Notifiche");
         notificationsButton.addActionListener(e -> {
-            if(Windows.currentStatus != 5) {
-                Windows.currentStatus = 5;
+            if(Windows.currentStatus != Pages.NOTIFICATIONS_PAGE) {
+                Windows.currentStatus = Pages.NOTIFICATIONS_PAGE;
                 Windows.cambiaPagina();
             }
         });

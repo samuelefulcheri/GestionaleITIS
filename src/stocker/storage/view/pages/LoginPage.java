@@ -4,18 +4,18 @@ import stocker.storage.view.component.SSPanel;
 import stocker.storage.view.component.SSTextArea;
 import java.awt.*;
 
-public class TerzaPagina extends SSPanel {
-    public TerzaPagina() {
+public class LoginPage extends SSPanel {
+    public LoginPage() {
         setBorder(null);
-        setBackground(Windows.GRIGIO_CHIARO);
+        setBackground(Windows.LIGHT_GRAY);
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        SSTextArea terzaPagina = new SSTextArea("Terza pagina");
+        SSTextArea accedi = new SSTextArea("Accedi");
         gbc.weightx = 1;
         gbc.weighty = 1;
         gbc.insets.set(150, 50, 0, 0);
         gbc.fill = 1;
-        add(terzaPagina, gbc);
+        add(accedi, gbc);
     }
 }

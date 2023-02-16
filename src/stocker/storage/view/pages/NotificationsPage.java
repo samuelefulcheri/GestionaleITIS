@@ -7,7 +7,7 @@ import java.awt.*;
 public class NotificationsPage extends SSPanel {
     public NotificationsPage() {
         setBorder(null);
-        setBackground(Windows.GRIGIO_CHIARO);
+        setBackground(Windows.LIGHT_GRAY);
 
         GridBagConstraints gbc = new GridBagConstraints();
 

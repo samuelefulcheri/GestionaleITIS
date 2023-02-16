@@ -7,7 +7,7 @@ import java.awt.*;
 public class StoragePage extends SSPanel {
     public StoragePage() {
         setBorder(null);
-        setBackground(Windows.GRIGIO_CHIARO);
+        setBackground(Windows.LIGHT_GRAY);
 
         GridBagConstraints gbc = new GridBagConstraints();
 

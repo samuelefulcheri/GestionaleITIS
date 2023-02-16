@@ -9,15 +9,15 @@ import java.awt.event.MouseEvent;
 public class SSButton extends JButton {
     public SSButton() {
         super();
-        setBackground(Windows.GRIGIO_CHIARO);
-        setBackground(Windows.GRIGIO_CHIARO);
-        setBorder(Windows.BORDO);
-        setForeground(Windows.BIANCO);
-        setFont(Windows.FONT_SCRITTE);
+        setBackground(Windows.LIGHT_GRAY);
+        setBackground(Windows.LIGHT_GRAY);
+        setBorder(Windows.SS_BORDER);
+        setForeground(Color.white);
+        setFont(Windows.PLAIN_FONT);
         setUI(new BasicButtonUI() {
             @Override
             protected void paintButtonPressed(Graphics g, AbstractButton button) {
-                button.setBackground(Windows.GRIGIO_SCURO);
+                button.setBackground(Windows.DARK_GRAY);
             }
 
             @Override
@@ -26,7 +26,7 @@ public class SSButton extends JButton {
                 button.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseReleased(MouseEvent e) {
-                        button.setBackground(Windows.GRIGIO_CHIARO);
+                        button.setBackground(Windows.LIGHT_GRAY);
                     }
                 });
             }

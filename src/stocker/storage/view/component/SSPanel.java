@@ -6,8 +6,8 @@ import java.awt.*;
 public class SSPanel extends JPanel {
     public SSPanel() {
         super();
-        setBackground(Windows.GRIGIO);
-        setBorder(Windows.BORDO);
+        setBackground(Windows.GRAY);
+        setBorder(Windows.SS_BORDER);
         setLayout(new GridBagLayout());
     }
 }

@@ -7,7 +7,7 @@ import java.awt.*;
 public class ErrorsPage extends SSPanel {
     public ErrorsPage() {
         setBorder(null);
-        setBackground(Windows.GRIGIO_CHIARO);
+        setBackground(Windows.LIGHT_GRAY);
 
         GridBagConstraints gbc = new GridBagConstraints();
 

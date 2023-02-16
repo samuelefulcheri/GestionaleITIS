@@ -7,7 +7,7 @@ import java.awt.*;
 public class WelcomePage extends SSPanel {
     public WelcomePage() {
         setBorder(null);
-        setBackground(Windows.GRIGIO_CHIARO);
+        setBackground(Windows.LIGHT_GRAY);
 
         GridBagConstraints gbc = new GridBagConstraints();
 
