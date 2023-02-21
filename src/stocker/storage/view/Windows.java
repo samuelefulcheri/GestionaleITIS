@@ -14,6 +14,7 @@ public class Windows extends JFrame {
     public static final Color DARK_GRAY = new Color(32, 34, 37);
     public static final Color GRAY = new Color(54, 57, 63);
     public static final Color LIGHT_GRAY = new Color(64, 68, 75);
+    public static final Color LIGHTER_GRAY = new Color(88, 91, 97);
 
     public static final Font PLAIN_FONT = new Font("ArialBold", Font.PLAIN, 18);
     public static final Font TITLE_FONT = new Font("ArialBold", Font.BOLD, 100);

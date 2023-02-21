@@ -3,8 +3,8 @@ import stocker.storage.view.Windows;
 import javax.swing.*;
 import java.awt.*;
 
-public class SSTextField extends JTextField {
-    public SSTextField() {
+public class SSPasswordField extends JPasswordField {
+    public SSPasswordField() {
         super();
         setBackground(Windows.LIGHTER_GRAY);
         setForeground(Color.white);
@@ -12,7 +12,7 @@ public class SSTextField extends JTextField {
         setBorder(Windows.SS_BORDER);
     }
 
-    public SSTextField(int columns) {
+    public SSPasswordField(int columns) {
         this();
         setColumns(columns);
     }
