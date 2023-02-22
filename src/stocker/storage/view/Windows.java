@@ -113,8 +113,7 @@ public class Windows extends JFrame {
                 welcomePage = new WelcomePage();
                 component = welcomePage;
                 previousStatus = Pages.WELCOME_PAGE;
-            }
-            case STORAGE_PAGE -> {
+            } case STORAGE_PAGE -> {
                 storagePage = new StoragePage();
                 component = storagePage;
                 previousStatus = Pages.STORAGE_PAGE;
