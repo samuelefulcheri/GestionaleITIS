@@ -14,12 +14,12 @@ public class SSTextArea extends JTextArea {
         setEditable(false);
         setFocusable(false);
         setFont(Windows.TITLE_FONT);
-        setLineWrap(true);
-        setWrapStyleWord(true);
         setAutoLineWrap();
     }
 
     public void setAutoLineWrap() {
+        setLineWrap(true);
+        setWrapStyleWord(true);
         Main.windows.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {

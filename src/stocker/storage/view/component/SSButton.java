@@ -7,10 +7,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class SSButton extends JButton {
+    private Color color = Windows.LIGHT_GRAY;
+
     public SSButton() {
         super();
-        setBackground(Windows.LIGHT_GRAY);
-        setBackground(Windows.LIGHT_GRAY);
+        setBackground(color);
         setBorder(Windows.SS_BORDER);
         setForeground(Color.white);
         setFont(Windows.PLAIN_FONT);
@@ -26,7 +27,7 @@ public class SSButton extends JButton {
                 button.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseReleased(MouseEvent e) {
-                        button.setBackground(Windows.LIGHT_GRAY);
+                        button.setBackground(color);
                     }
                 });
             }
@@ -36,5 +37,9 @@ public class SSButton extends JButton {
     public SSButton(String text) {
         this();
         setText(text);
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 }

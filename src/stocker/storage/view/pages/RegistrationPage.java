@@ -58,6 +58,7 @@ public class RegistrationPage extends SSPanel {
         add(passwordField, gbc);
 
         SSButton registerButton = new SSButton("Registrati");
+        registerButton.setColor(Windows.LIGHTER_GRAY);
         registerButton.setBackground(Windows.LIGHTER_GRAY);
         registerButton.setPreferredSize(new Dimension(0, 50));
 
