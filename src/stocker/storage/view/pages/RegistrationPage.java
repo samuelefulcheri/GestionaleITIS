@@ -5,6 +5,8 @@ import stocker.storage.view.component.*;
 import javax.swing.*;
 import java.awt.*;
 
+// TODO: Fixare scritta
+
 public class RegistrationPage extends SSPanel {
     private final SSTextField nameField = new SSTextField(20);
     private final SSTextField emailField = new SSTextField(20);
@@ -13,48 +15,54 @@ public class RegistrationPage extends SSPanel {
     public RegistrationPage() {
         setBorder(null);
         setBackground(Windows.LIGHT_GRAY);
+        setLayout(new GridBagLayout());
 
-
-        //SSTextArea registrati = new SSTextArea("Registrati");
-        //gbc.weightx = 0.5;
-        //gbc.weighty = 0.5;
-        //gbc.insets.set(150, 50, 0, 0);
-        //gbc.fill = 1;
-        //add(registrati, gbc);
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        SSLabel nameLabel = new SSLabel("Nome:");
+        SSTextArea registrati = new SSTextArea("Registrati");
 
+        gbc.gridy = 0;
+        gbc.gridx = 0;
         gbc.fill = 1;
         gbc.insets.set(10, 10, 10, 10);
+        gbc.gridwidth = 4;
+
+        add(registrati, gbc);
+
+        SSLabel nameLabel = new SSLabel("Nome:");
+
+        gbc.gridy = 1;
+        gbc.gridx = 1;
+        gbc.fill = 1;
+        gbc.gridwidth = 1;
 
         add(nameLabel, gbc);
 
         nameField.setPreferredSize(new Dimension(0, 35));
-        gbc.gridx = 1;
+        gbc.gridx = 2;
         add(nameField, gbc);
 
         SSLabel emailLabel = new SSLabel("Email:");
 
-        gbc.gridx = 0;
-        gbc.gridy = 1;
+        gbc.gridx = 1;
+        gbc.gridy = 2;
 
         add(emailLabel, gbc);
 
         emailField.setPreferredSize(new Dimension(0, 35));
-        gbc.gridx = 1;
+        gbc.gridx = 2;
         add(emailField, gbc);
 
         SSLabel passwordLabel = new SSLabel("Password:");
 
-        gbc.gridx = 0;
-        gbc.gridy = 2;
+        gbc.gridx = 1;
+        gbc.gridy = 3;
 
         add(passwordLabel, gbc);
 
         passwordField.setPreferredSize(new Dimension(0, 35));
-        gbc.gridx = 1;
+        gbc.gridx = 2;
         add(passwordField, gbc);
 
         SSButton registerButton = new SSButton("Registrati");
@@ -72,10 +80,9 @@ public class RegistrationPage extends SSPanel {
             JOptionPane.showMessageDialog(null, "Registrazione completata!");
         });
 
-        gbc.gridx = 0;
-        gbc.gridy = 3;
+        gbc.gridx = 1;
+        gbc.gridy = 4;
         gbc.gridwidth = 2;
-        gbc.anchor = GridBagConstraints.CENTER;
 
         add(registerButton, gbc);
     }
