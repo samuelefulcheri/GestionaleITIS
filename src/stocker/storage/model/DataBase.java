@@ -5,6 +5,10 @@ package stocker.storage.model;
 // import java.sql.SQLException;
 // import java.sql.Statement;
 
-public class DataBase {
+import stocker.storage.model.objects.Objects;
 
+public class DataBase {
+    public Objects getDato() {
+        return new Objects() { };
+    }
 }
