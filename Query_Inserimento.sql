@@ -37,3 +37,11 @@ CREATE TABLE IF NOT EXISTS ProdottiUscita(
 	PRIMARY KEY(codiceProdotto),
     FOREIGN KEY(codiceScaffale) REFERENCES Scaffali (codiceScaffale)
 );
+
+CREATE TABLE IF NOT EXISTS Account(
+    codiceAccount INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(20),
+    email VARCHAR(20),
+    password VARCHAR(20),
+    PRIMARY KEY codiceAccount
+);
