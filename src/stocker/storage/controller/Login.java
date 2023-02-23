@@ -1,5 +1,4 @@
 package stocker.storage.controller;
-
 import stocker.storage.model.DataBase;
 
 public class Login {
