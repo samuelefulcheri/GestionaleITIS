@@ -2,22 +2,18 @@ package stocker.storage.model;
 import java.util.Scanner;
 
 public class MenuScelta {
-
     public static void main(String[] args) {
         Funzioni f = new Funzioni();
-        Dati d = new Dati();
-
+        Dati d;
         Scanner input = new Scanner(System.in);
+        int opz;
 
-        int opz = 0;
-
-        do {
+        do{
             menu();
-
             opz = input.nextInt();
 
-            switch (opz) {
-                case 1:
+            switch(opz) {
+                case 1 -> {
                     System.out.println("Inserisci il codice del prodotto");
                     int codiceProdotto = input.nextInt();
 
@@ -53,19 +49,13 @@ public class MenuScelta {
                             identificativoCorriere, compagniaTrasporti);
 
                     f.aggiungi(d);
-
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    System.out.println("Inserisci il codice ");
-                    break;
+                } case 2, 3 -> { }
+                case 4 -> System.out.println("Inserisci il codice ");
             }
         }while(opz != 4);
     }
-    public static void menu(){
+
+    public static void menu() {
         System.out.println("MENU'");
         System.out.println("1) Aggiunta prodotto");
         System.out.println("2) Lettura prodotti");

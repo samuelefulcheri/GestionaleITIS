@@ -18,42 +18,23 @@ public class StorageShelf {
     }
 
     public boolean addObject(@NotNull StorageObject obj) {
-        int sizeX = obj.sizeX;
-        int sizeY = obj.sizeY;
+        int sizeX = obj.sizeX();
+        int sizeY = obj.sizeY();
 
         if(getFree() < sizeX*sizeY) return false;
 
-        for(int y = 0; y < sizeY; y++) {
-            for(int x = 0; x < sizeX; x++) {
-                System.out.println(x);
-            }
-        }
-
+        boolean result = findAndFillSubMatrix(sizeX, sizeY);
         content.add(obj);
-        return true;
+
+        return result;
     }
 
     public ArrayList<StorageObject> getObjects(String search) {
         ArrayList<StorageObject> results = new ArrayList<>();
         for(StorageObject obj: content)
-            if(obj.content.equals(search)) results.add(obj);
+            if(obj.content().equals(search)) results.add(obj);
+
         return results;
-    }
-
-    private boolean isFree(int x, int y) {
-        return shelf[y][x];
-    }
-
-    private int getUsage() {
-        int i = 0;
-        for(int y = 0; y < sizeY; y++)
-            for(int x = 0; x < sizeY; x++)
-                if(!isFree(x, y)) i++;
-        return i;
-    }
-
-    private int getFree() {
-        return sizeX*sizeY-getUsage();
     }
 
     public int getSizeX() {
@@ -61,5 +42,52 @@ public class StorageShelf {
     }
     public int getSizeY() {
         return sizeY;
+    }
+    public boolean[][] getShelf() {
+        return shelf;
+    }
+
+
+    // Miscellaneous
+
+    private int getUsage() {
+        int i = 0;
+        for(int y = 0; y < sizeY; y++)
+            for(int x = 0; x < sizeX; x++)
+                if(isUsed(x, y)) i++;
+
+        return i;
+    }
+
+    private boolean findAndFillSubMatrix(int sizeX, int sizeY) {
+        for(int y = 0; y <= this.sizeY-sizeY; y++)
+            for(int x = 0; x <= this.sizeX-sizeX; x++)
+                if(isSubMatrixEmpty(x, y, sizeX, sizeY)) {
+                    fillSubMatrix(x, y, sizeX, sizeY);
+                    return true;
+                }
+
+        return false;
+    }
+
+    private boolean isSubMatrixEmpty(int row, int col, int sizeX, int sizeY) {
+        for(int y = row; y < row+sizeY; y++)
+            for(int x = col; x < col+sizeX; x++)
+                if(isUsed(x, y)) return false;
+
+        return true;
+    }
+
+    private void fillSubMatrix(int row, int col, int sizeX, int sizeY) {
+        for(int y = row; y < row+sizeY; y++)
+            for(int x = col; x < col+sizeX; x++)
+                shelf[y][x] = false;
+    }
+
+    private boolean isUsed(int x, int y) {
+        return !shelf[y][x];
+    }
+    private int getFree() {
+        return sizeX*sizeY-getUsage();
     }
 }

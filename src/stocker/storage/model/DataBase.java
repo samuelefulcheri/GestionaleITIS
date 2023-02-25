@@ -9,6 +9,6 @@ import stocker.storage.model.objects.StorageObject;
 
 public class DataBase {
     public StorageObject getDato() {
-        return new StorageObject(1, 1, "penna") { };
+        return new StorageObject(1, 1, "penna");
     }
 }
