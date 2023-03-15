@@ -1,3 +1,3 @@
 package stocker.storage.model.objects;
 
-public record StorageObject(int sizeX, int sizeY, String content) { }
+public record StorageObject(int id, String content, int sizeX, int sizeY) { }

@@ -3,12 +3,14 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 public class StorageShelf {
+    private final int id;
     private final int sizeX;
     private final int sizeY;
     private final boolean[][] shelf;
     private final ArrayList<StorageObject> content;
 
-    public StorageShelf(int sizeX, int sizeY) {
+    public StorageShelf(int id, int sizeX, int sizeY) {
+        this.id = id;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         shelf = new boolean[sizeY][sizeX];
@@ -37,6 +39,9 @@ public class StorageShelf {
         return results;
     }
 
+    public int getId() {
+        return id;
+    }
     public int getSizeX() {
         return sizeX;
     }

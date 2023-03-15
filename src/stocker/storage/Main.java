@@ -17,14 +17,14 @@ public class Main {
         // Prova dati
 
         String nome = "penne";
-        StorageObject ogg = new StorageObject(2, 3, nome);
-        StorageShelf shelf = new StorageShelf(5, 5);
+        StorageObject ogg = new StorageObject(1, nome, 2, 3);
+        StorageShelf shelf = new StorageShelf(1, 5, 5);
 
         if(shelf.addObject(ogg)) {
             ArrayList<StorageObject> oggetti = shelf.getObjects(nome);
-            System.out.println("Ecco il contenuto di uno scaffale " + shelf.getSizeX() + "x" + shelf.getSizeY());
+            System.out.println("Shelf id: " + shelf.getId() + "; size: " + shelf.getSizeX() + "x" + shelf.getSizeY());
 
-            int iter = 0;
+            int iter = 1;
             for(StorageObject obj : oggetti) {
                 System.out.println(iter + ") " + obj.content());
                 iter++;
