@@ -51,6 +51,9 @@ public class StorageShelf {
     public boolean[][] getShelf() {
         return shelf;
     }
+    public ArrayList<StorageObject> getContent() {
+        return content;
+    }
 
 
     // Miscellaneous

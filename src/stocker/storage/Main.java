@@ -1,5 +1,6 @@
 package stocker.storage;
 import stocker.storage.model.objects.StorageObject;
+import stocker.storage.model.objects.StorageObjectType;
 import stocker.storage.model.objects.StorageShelf;
 import stocker.storage.view.Windows;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class Main {
         // Prova dati
 
         String nome = "penne";
-        StorageObject ogg = new StorageObject(1, nome, 2, 3);
+        StorageObject ogg = new StorageObject(1, nome, 2, 3, StorageObjectType.IMPORT);
         StorageShelf shelf = new StorageShelf(1, 5, 5);
 
         if(shelf.addObject(ogg)) {
