@@ -34,19 +34,19 @@
 
 # Stories e Features
 * Creazione GUI: -> 2 -> 41P (tot)
-  - Inserimento accesso utente -> 8 -> 2P
-  - Inserimento caselle campi -> 13 -> 2P
-  - Pulsanti di accesso -> 20 -> 2P
+  - Inserimento accesso utente -> 8 -> 2P -- Fatto
+  - Inserimento caselle campi -> 13 -> 2P -- Fatto
+  - Pulsanti di accesso -> 20 -> 2P -- Fatto
   - Schermata di benvenuto -> 100 -> 5P
   - Grafica per l'engine -> 3 -> 20P
   - Gestione dei problemi -> 5 -> 5P
   - Barra delle notifiche -> 40 -> 5P
 * DataBase: -> 0 -> 30P (tot)
-  - Creazione di un DataBase -> 0 -> 2P
-  - Creazione tabelle in entrata, in uscita e stock -> 13 -> 5P
-  - Gestione CRUD dei dati -> 20 -> 3P
+  - Creazione di un DataBase -> 0 -> 2P -- Fatto
+  - Creazione tabelle in entrata, in uscita e stock -> 13 -> 5P -- Fatto
+  - Gestione CRUD dei dati -> 20 -> 3P -- Fatto
   - Inserimento dati -> 40 -> 20P
 * Gestione spazio / Engine: -> 40 -> 41P (tot)
-  - Creazione di oggetti (scaffale, prodotti) -> 0 -> 20P
-  - Creazione di metodi e proprietà degli oggetti -> 3 -> 13P
+  - Creazione di oggetti (scaffale, prodotti) -> 0 -> 20P -- Fatto
+  - Creazione di metodi e proprietà degli oggetti -> 3 -> 13P -- Fatto
   - Generazione di errori e notifiche per i vari casi -> 40 -> 8P
