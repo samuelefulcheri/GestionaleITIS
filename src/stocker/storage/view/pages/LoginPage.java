@@ -59,6 +59,7 @@ public class LoginPage extends SSPanel {
 
         loginButton.addActionListener(e -> azionePulsante());
 
+        //TODO: Farlo funzionante
         setFocusable(true);
         addKeyListener(new KeyAdapter() {
             @Override

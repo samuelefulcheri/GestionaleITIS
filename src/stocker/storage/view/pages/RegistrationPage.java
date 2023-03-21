@@ -75,6 +75,7 @@ public class RegistrationPage extends SSPanel {
 
         registerButton.addActionListener(e -> azionePulsante());
 
+        //TODO: Farlo funzionante
         setFocusable(true);
         addKeyListener(new KeyAdapter() {
             @Override
