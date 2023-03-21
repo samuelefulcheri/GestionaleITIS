@@ -1,6 +1,8 @@
 package stocker.storage.view;
 import stocker.storage.view.component.SSButton;
 import stocker.storage.view.component.SSPanel;
+import stocker.storage.view.pages.Pages;
+
 import javax.swing.*;
 import java.awt.*;
 

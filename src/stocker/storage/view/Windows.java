@@ -7,8 +7,10 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.File;
+import java.io.PrintWriter;
 
 public class Windows extends JFrame {
     public static final Color DARK_GRAY = new Color(32, 34, 37);
@@ -41,9 +43,34 @@ public class Windows extends JFrame {
         setLayout(new GridBagLayout());
         getContentPane().setBackground(GRAY);
 
+        addWindowListener(new WindowListener() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                try {
+                    var nuovoFile = new PrintWriter("saves\\user" + Main.extension);
+                    nuovoFile.print(Main.currentUser);
+                    nuovoFile.close();
+                }catch(Exception ignored) { }
 
-        ButtonsPanel buttonsPanel = new ButtonsPanel();
-        GridBagConstraints gbc = new GridBagConstraints();
+                System.exit(0);
+            }
+
+            @Override
+            public void windowOpened(WindowEvent e) { }
+            @Override
+            public void windowClosed(WindowEvent e) { }
+            @Override
+            public void windowIconified(WindowEvent e) { }
+            @Override
+            public void windowDeiconified(WindowEvent e) { }
+            @Override
+            public void windowActivated(WindowEvent e) { }
+            @Override
+            public void windowDeactivated(WindowEvent e) { }
+        });
+
+        var buttonsPanel = new ButtonsPanel();
+        var gbc = new GridBagConstraints();
 
         gbc.weightx = 0.15;
         gbc.weighty = 1;
@@ -58,7 +85,7 @@ public class Windows extends JFrame {
         gbc.insets.set(5, 0, 5, 5);
         add(componentPanel, gbc);
 
-        SSScrollPane scroll = new SSScrollPane(componentPanel);
+        var scroll = new SSScrollPane(componentPanel);
 
         gbc.weightx = 1;
         gbc.insets.set(0, 0, 0, 0);
@@ -66,11 +93,10 @@ public class Windows extends JFrame {
         add(scroll, gbc);
 
         try{
-            BufferedImage image = ImageIO.read(new File("Icon.png"));
+            var image = ImageIO.read(new File("Icon.png"));
             setIconImage(image);
         }catch(Exception ignored) { }
 
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
 
@@ -139,7 +165,7 @@ public class Windows extends JFrame {
             }
         }
 
-        GridBagConstraints gbc = new GridBagConstraints();
+        var gbc = new GridBagConstraints();
 
         gbc.weightx = 1;
         gbc.weighty = 1;
@@ -150,11 +176,3 @@ public class Windows extends JFrame {
     }
 }
 
-enum Pages {
-    WELCOME_PAGE,
-    STORAGE_PAGE,
-    REGISTRATION_PAGE,
-    LOGIN_PAGE,
-    ERRORS_PAGE,
-    NOTIFICATIONS_PAGE
-}

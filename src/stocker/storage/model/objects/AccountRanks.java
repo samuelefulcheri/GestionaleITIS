@@ -1,5 +1,7 @@
 package stocker.storage.model.objects;
 
+import org.jetbrains.annotations.Nullable;
+
 public enum AccountRanks {
     ADMINISTRATOR("administrator"),
     EMPLOYEE("employee");
@@ -8,6 +10,13 @@ public enum AccountRanks {
 
     AccountRanks(String value) {
         this.value = value;
+    }
+
+    public static @Nullable AccountRanks getRankFromString(String value) {
+        for(AccountRanks rank: AccountRanks.values())
+            if(rank.value.equals(value)) return rank;
+
+        return null;
     }
 
     @Override

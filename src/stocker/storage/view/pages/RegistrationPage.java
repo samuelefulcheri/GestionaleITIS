@@ -2,25 +2,28 @@ package stocker.storage.view.pages;
 import stocker.storage.controller.Login;
 import stocker.storage.view.Windows;
 import stocker.storage.view.component.*;
-import javax.swing.*;
 import java.awt.*;
-
-// TODO: Fixare scritta
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class RegistrationPage extends SSPanel {
-    private final SSTextField nameField = new SSTextField(20);
-    private final SSTextField emailField = new SSTextField(20);
-    private final SSPasswordField passwordField = new SSPasswordField(20);
+    private final SSTextField nameField;
+    private final SSTextField emailField;
+    private final SSPasswordField passwordField;
 
     public RegistrationPage() {
         setBorder(null);
         setBackground(Windows.LIGHT_GRAY);
         setLayout(new GridBagLayout());
 
+        nameField = new SSTextField(20);
+        emailField = new SSTextField(50);
+        passwordField = new SSPasswordField(20);
 
-        GridBagConstraints gbc = new GridBagConstraints();
+        var gbc = new GridBagConstraints();
 
-        SSTextArea registrati = new SSTextArea("Registrati");
+        var registrati = new SSTextArea("Registrati");
+        registrati.setLineWrap(false);
 
         gbc.gridy = 0;
         gbc.gridx = 0;
@@ -30,7 +33,7 @@ public class RegistrationPage extends SSPanel {
 
         add(registrati, gbc);
 
-        SSLabel nameLabel = new SSLabel("Nome:");
+        var nameLabel = new SSLabel("Nome:");
 
         gbc.gridy = 1;
         gbc.gridx = 1;
@@ -43,7 +46,7 @@ public class RegistrationPage extends SSPanel {
         gbc.gridx = 2;
         add(nameField, gbc);
 
-        SSLabel emailLabel = new SSLabel("Email:");
+        var emailLabel = new SSLabel("Email:");
 
         gbc.gridx = 1;
         gbc.gridy = 2;
@@ -54,7 +57,7 @@ public class RegistrationPage extends SSPanel {
         gbc.gridx = 2;
         add(emailField, gbc);
 
-        SSLabel passwordLabel = new SSLabel("Password:");
+        var passwordLabel = new SSLabel("Password:");
 
         gbc.gridx = 1;
         gbc.gridy = 3;
@@ -65,19 +68,19 @@ public class RegistrationPage extends SSPanel {
         gbc.gridx = 2;
         add(passwordField, gbc);
 
-        SSButton registerButton = new SSButton("Registrati");
+        var registerButton = new SSButton("Registrati");
         registerButton.setColor(Windows.LIGHTER_GRAY);
         registerButton.setBackground(Windows.LIGHTER_GRAY);
         registerButton.setPreferredSize(new Dimension(0, 50));
 
-        registerButton.addActionListener(e -> {
-            String name = nameField.getText();
-            String email = emailField.getText();
-            String password = new String(passwordField.getPassword());
+        registerButton.addActionListener(e -> azionePulsante());
 
-            Login.login(name, email, password);
-
-            JOptionPane.showMessageDialog(null, "Registrazione completata!");
+        setFocusable(true);
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_ENTER) azionePulsante();
+            }
         });
 
         gbc.gridx = 1;
@@ -85,5 +88,29 @@ public class RegistrationPage extends SSPanel {
         gbc.gridwidth = 2;
 
         add(registerButton, gbc);
+    }
+
+    private void azionePulsante() {
+        var name = nameField.getText().trim();
+        var email = emailField.getText().replaceAll(" ", "");
+        var password = new String(passwordField.getPassword());
+
+        var errorMessages = Login.nameValidation(name) +
+                Login.emailValidation(email) +
+                Login.passwordValidation(password);
+
+        System.out.println(Login.nameValidation(name));
+
+        if(errorMessages.isEmpty()) {
+            var safeName = Login.encode(name);
+            email = Login.encode(email);
+            password = Login.encode(password);
+
+            if(Login.register(safeName, email, password)) {
+                new Message("Registrazione effettuata!", "Benvenuto " + name + "!", true);
+                Windows.currentStatus = Pages.LOGIN_PAGE;
+                Windows.cambiaPagina();
+            }else new Message("E-Mail o Password errate.");
+        }else new Message(errorMessages);
     }
 }
