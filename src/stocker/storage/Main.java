@@ -7,10 +7,12 @@ import java.util.Scanner;
 public class Main {
     public static Windows windows;
     public static StorageAccount currentUser;
-    public static String extension = ".ss";
-    public static String separator = ";;;";
+
+    public static final String extension = ".ss";
+    public static final String separator = ";;;";
 
     public static void main(String[] args) {
+        // Ricorda i dati di accesso dell'utente
         try{
             var input = new Scanner(new File("saves\\user" + extension));
             var line = input.nextLine();
@@ -26,6 +28,7 @@ public class Main {
 
             input.close();
         }catch(Exception ignored) { }
+
 
         // Grafica
 
