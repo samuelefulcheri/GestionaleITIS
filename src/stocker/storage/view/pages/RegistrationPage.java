@@ -1,6 +1,8 @@
 package stocker.storage.view.pages;
+import org.jetbrains.annotations.NotNull;
+import stocker.storage.Main;
 import stocker.storage.controller.Login;
-import stocker.storage.view.Windows;
+import stocker.storage.view.SSWindow;
 import stocker.storage.view.component.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -13,7 +15,7 @@ public class RegistrationPage extends SSPanel {
 
     public RegistrationPage() {
         setBorder(null);
-        setBackground(Windows.LIGHT_GRAY);
+        setBackground(SSWindow.LIGHT_GRAY);
         setLayout(new GridBagLayout());
 
         nameField = new SSTextField(20);
@@ -69,20 +71,21 @@ public class RegistrationPage extends SSPanel {
         add(passwordField, gbc);
 
         var registerButton = new SSButton("Registrati");
-        registerButton.setColor(Windows.LIGHTER_GRAY);
-        registerButton.setBackground(Windows.LIGHTER_GRAY);
+        registerButton.setColor(SSWindow.LIGHTER_GRAY);
+        registerButton.setBackground(SSWindow.LIGHTER_GRAY);
         registerButton.setPreferredSize(new Dimension(0, 50));
 
         registerButton.addActionListener(e -> azionePulsante());
 
-        //TODO: Farlo funzionante
-        setFocusable(true);
-        addKeyListener(new KeyAdapter() {
+        var keyListener = new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e) {
+            public void keyPressed(@NotNull KeyEvent e) {
                 if(e.getKeyCode() == KeyEvent.VK_ENTER) azionePulsante();
             }
-        });
+        }; Main.window.addKeyListener(keyListener);
+        nameField.addKeyListener(keyListener);
+        emailField.addKeyListener(keyListener);
+        passwordField.addKeyListener(keyListener);
 
         gbc.gridx = 1;
         gbc.gridy = 4;
@@ -100,8 +103,6 @@ public class RegistrationPage extends SSPanel {
                 Login.emailValidation(email) +
                 Login.passwordValidation(password);
 
-        System.out.println(Login.nameValidation(name));
-
         if(errorMessages.isEmpty()) {
             var safeName = Login.encode(name);
             email = Login.encode(email);
@@ -109,8 +110,8 @@ public class RegistrationPage extends SSPanel {
 
             if(Login.register(safeName, email, password)) {
                 new Message("Registrazione effettuata!", "Benvenuto " + name + "!", true);
-                Windows.currentStatus = Pages.LOGIN_PAGE;
-                Windows.cambiaPagina();
+                SSWindow.currentStatus = Pages.LOGIN_PAGE;
+                SSWindow.cambiaPagina();
             }else new Message("E-Mail o Password errate.");
         }else new Message(errorMessages);
     }

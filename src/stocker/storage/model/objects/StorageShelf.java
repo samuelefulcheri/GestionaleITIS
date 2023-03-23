@@ -14,18 +14,18 @@ public class StorageShelf {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         shelf = new boolean[sizeY][sizeX];
-        for(int y = 0; y < sizeY; y++)
-            for(int x = 0; x < sizeX; x++) shelf[y][x] = true;
+        for(var y = 0; y < sizeY; y++)
+            for(var x = 0; x < sizeX; x++) shelf[y][x] = true;
         content = new ArrayList<>();
     }
 
     public boolean addObject(@NotNull StorageObject obj) {
-        int sizeX = obj.sizeX();
-        int sizeY = obj.sizeY();
+        var sizeX = obj.sizeX();
+        var sizeY = obj.sizeY();
 
         if(getFree() < sizeX*sizeY) return false;
 
-        boolean result = findAndFillSubMatrix(sizeX, sizeY);
+        var result = findAndFillSubMatrix(sizeX, sizeY);
         content.add(obj);
 
         return result;
@@ -33,7 +33,7 @@ public class StorageShelf {
 
     public ArrayList<StorageObject> getObjects(String search) {
         ArrayList<StorageObject> results = new ArrayList<>();
-        for(StorageObject obj: content)
+        for(var obj: content)
             if(obj.content().equals(search)) results.add(obj);
 
         return results;
@@ -59,17 +59,17 @@ public class StorageShelf {
     // Miscellaneous
 
     private int getUsage() {
-        int i = 0;
-        for(int y = 0; y < sizeY; y++)
-            for(int x = 0; x < sizeX; x++)
+        var i = 0;
+        for(var y = 0; y < sizeY; y++)
+            for(var x = 0; x < sizeX; x++)
                 if(isUsed(x, y)) i++;
 
         return i;
     }
 
     private boolean findAndFillSubMatrix(int sizeX, int sizeY) {
-        for(int y = 0; y <= this.sizeY-sizeY; y++)
-            for(int x = 0; x <= this.sizeX-sizeX; x++)
+        for(var y = 0; y <= this.sizeY-sizeY; y++)
+            for(var x = 0; x <= this.sizeX-sizeX; x++)
                 if(isSubMatrixEmpty(x, y, sizeX, sizeY)) {
                     fillSubMatrix(x, y, sizeX, sizeY);
                     return true;
@@ -79,16 +79,16 @@ public class StorageShelf {
     }
 
     private boolean isSubMatrixEmpty(int row, int col, int sizeX, int sizeY) {
-        for(int y = row; y < row+sizeY; y++)
-            for(int x = col; x < col+sizeX; x++)
+        for(var y = row; y < row+sizeY; y++)
+            for(var x = col; x < col+sizeX; x++)
                 if(isUsed(x, y)) return false;
 
         return true;
     }
 
     private void fillSubMatrix(int row, int col, int sizeX, int sizeY) {
-        for(int y = row; y < row+sizeY; y++)
-            for(int x = col; x < col+sizeX; x++)
+        for(var y = row; y < row+sizeY; y++)
+            for(var x = col; x < col+sizeX; x++)
                 shelf[y][x] = false;
     }
 

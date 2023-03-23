@@ -1,7 +1,7 @@
 package stocker.storage.view.pages;
 import stocker.storage.Main;
 import stocker.storage.controller.Login;
-import stocker.storage.view.Windows;
+import stocker.storage.view.SSWindow;
 import stocker.storage.view.component.SSPanel;
 import stocker.storage.view.component.SSTextArea;
 import java.awt.*;
@@ -9,7 +9,7 @@ import java.awt.*;
 public class WelcomePage extends SSPanel {
     public WelcomePage() {
         setBorder(null);
-        setBackground(Windows.LIGHT_GRAY);
+        setBackground(SSWindow.LIGHT_GRAY);
 
         var gbc = new GridBagConstraints();
         var welcomeText = (Main.currentUser != null)

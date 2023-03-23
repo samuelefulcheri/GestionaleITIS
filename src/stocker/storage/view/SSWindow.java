@@ -7,12 +7,12 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.PrintWriter;
 
-public class Windows extends JFrame {
+public class SSWindow extends JFrame {
     public static final Color DARK_GRAY = new Color(32, 34, 37);
     public static final Color GRAY = new Color(54, 57, 63);
     public static final Color LIGHT_GRAY = new Color(64, 68, 75);
@@ -21,7 +21,7 @@ public class Windows extends JFrame {
     public static final Font PLAIN_FONT = new Font("ArialBold", Font.PLAIN, 18);
     public static final Font TITLE_FONT = new Font("ArialBold", Font.BOLD, 100);
 
-    public static final Border SS_BORDER = BorderFactory.createLineBorder(Windows.DARK_GRAY);
+    public static final Border SS_BORDER = BorderFactory.createLineBorder(SSWindow.DARK_GRAY);
 
     private static SSPanel componentPanel;
 
@@ -35,7 +35,7 @@ public class Windows extends JFrame {
     private static ErrorsPage errorsPage;
     private static NotificationsPage notificationsPage;
 
-    public Windows() {
+    public SSWindow() {
         super("Stocker Storage");
         setSize(800, 500);
         setLocationRelativeTo(null);
@@ -43,30 +43,17 @@ public class Windows extends JFrame {
         setLayout(new GridBagLayout());
         getContentPane().setBackground(GRAY);
 
-        addWindowListener(new WindowListener() {
+        addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 try {
-                    var nuovoFile = new PrintWriter("saves\\user" + Main.extension);
-                    nuovoFile.print(Main.currentUser);
-                    nuovoFile.close();
+                    var newFile = new PrintWriter("saves\\user" + Main.extension);
+                    newFile.print(Main.currentUser);
+                    newFile.close();
                 }catch(Exception ignored) { }
 
                 System.exit(0);
             }
-
-            @Override
-            public void windowOpened(WindowEvent e) { }
-            @Override
-            public void windowClosed(WindowEvent e) { }
-            @Override
-            public void windowIconified(WindowEvent e) { }
-            @Override
-            public void windowDeiconified(WindowEvent e) { }
-            @Override
-            public void windowActivated(WindowEvent e) { }
-            @Override
-            public void windowDeactivated(WindowEvent e) { }
         });
 
         var buttonsPanel = new ButtonsPanel();
@@ -101,10 +88,7 @@ public class Windows extends JFrame {
     }
 
     public void welcomePage() {
-        // TODO: Migliorare sta cosa
-        currentStatus = Pages.STORAGE_PAGE;
         previousStatus = Pages.WELCOME_PAGE;
-        cambiaPagina();
         currentStatus = Pages.WELCOME_PAGE;
         cambiaPagina();
     }
@@ -172,7 +156,7 @@ public class Windows extends JFrame {
         gbc.fill = 1;
 
         componentPanel.add(component, gbc);
-        Main.windows.setVisible(true);
+        Main.window.setVisible(true);
     }
 }
 

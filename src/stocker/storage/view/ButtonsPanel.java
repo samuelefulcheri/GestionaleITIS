@@ -2,19 +2,18 @@ package stocker.storage.view;
 import stocker.storage.view.component.SSButton;
 import stocker.storage.view.component.SSPanel;
 import stocker.storage.view.pages.Pages;
-
 import javax.swing.*;
 import java.awt.*;
 
 public class ButtonsPanel extends SSPanel {
     public ButtonsPanel() {
-        GridBagConstraints gbc = new GridBagConstraints();
+        var gbc = new GridBagConstraints();
 
-        SSButton storageButton = new SSButton("Magazzino");
+        var storageButton = new SSButton("Magazzino");
         storageButton.addActionListener(e -> {
-            if(Windows.currentStatus != Pages.STORAGE_PAGE) {
-                Windows.currentStatus = Pages.STORAGE_PAGE;
-                Windows.cambiaPagina();
+            if(SSWindow.currentStatus != Pages.STORAGE_PAGE) {
+                SSWindow.currentStatus = Pages.STORAGE_PAGE;
+                SSWindow.cambiaPagina();
             }
         });
 
@@ -24,43 +23,43 @@ public class ButtonsPanel extends SSPanel {
         gbc.fill = 1;
         add(storageButton, gbc);
 
-        SSButton bottone2 = new SSButton("Registrati");
-        bottone2.addActionListener(e -> {
-            if(Windows.currentStatus != Pages.REGISTRATION_PAGE) {
-                Windows.currentStatus = Pages.REGISTRATION_PAGE;
-                Windows.cambiaPagina();
+        var registrationButton = new SSButton("Registrati");
+        registrationButton.addActionListener(e -> {
+            if(SSWindow.currentStatus != Pages.REGISTRATION_PAGE) {
+                SSWindow.currentStatus = Pages.REGISTRATION_PAGE;
+                SSWindow.cambiaPagina();
             }
         });
 
         gbc.gridy = 1;
         gbc.insets.set(0, 15, 15, 15);
-        add(bottone2, gbc);
+        add(registrationButton, gbc);
 
-        SSButton bottone3 = new SSButton("Accedi");
-        bottone3.addActionListener(e -> {
-            if(Windows.currentStatus != Pages.LOGIN_PAGE) {
-                Windows.currentStatus = Pages.LOGIN_PAGE;
-                Windows.cambiaPagina();
+        var loginButton = new SSButton("Accedi");
+        loginButton.addActionListener(e -> {
+            if(SSWindow.currentStatus != Pages.LOGIN_PAGE) {
+                SSWindow.currentStatus = Pages.LOGIN_PAGE;
+                SSWindow.cambiaPagina();
             }
         });
 
         gbc.gridy = 2;
-        add(bottone3, gbc);
+        add(loginButton, gbc);
 
-        JPanel vuoto = new JPanel();
-        vuoto.setBackground(Windows.GRAY);
+        var emptyPanel = new JPanel();
+        emptyPanel.setBackground(SSWindow.GRAY);
 
         gbc.gridy = 3;
         gbc.weighty = 0.75;
         gbc.insets.set(0, 0, 0, 0);
-        add(vuoto, gbc);
+        add(emptyPanel, gbc);
 
-        SSButton errorsButton = new SSButton("Errors");
+        var errorsButton = new SSButton("Errors");
         errorsButton.setForeground(Color.red);
         errorsButton.addActionListener(e -> {
-            if(Windows.currentStatus != Pages.ERRORS_PAGE) {
-                Windows.currentStatus = Pages.ERRORS_PAGE;
-                Windows.cambiaPagina();
+            if(SSWindow.currentStatus != Pages.ERRORS_PAGE) {
+                SSWindow.currentStatus = Pages.ERRORS_PAGE;
+                SSWindow.cambiaPagina();
             }
         });
 
@@ -69,11 +68,11 @@ public class ButtonsPanel extends SSPanel {
         gbc.insets.set(0, 15, 15, 15);
         add(errorsButton, gbc);
 
-        SSButton notificationsButton = new SSButton("Notifiche");
+        var notificationsButton = new SSButton("Notifiche");
         notificationsButton.addActionListener(e -> {
-            if(Windows.currentStatus != Pages.NOTIFICATIONS_PAGE) {
-                Windows.currentStatus = Pages.NOTIFICATIONS_PAGE;
-                Windows.cambiaPagina();
+            if(SSWindow.currentStatus != Pages.NOTIFICATIONS_PAGE) {
+                SSWindow.currentStatus = Pages.NOTIFICATIONS_PAGE;
+                SSWindow.cambiaPagina();
             }
         });
 

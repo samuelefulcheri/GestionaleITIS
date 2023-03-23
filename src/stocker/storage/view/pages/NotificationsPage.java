@@ -1,5 +1,5 @@
 package stocker.storage.view.pages;
-import stocker.storage.view.Windows;
+import stocker.storage.view.SSWindow;
 import stocker.storage.view.component.SSPanel;
 import stocker.storage.view.component.SSTextArea;
 import java.awt.*;
@@ -7,11 +7,11 @@ import java.awt.*;
 public class NotificationsPage extends SSPanel {
     public NotificationsPage() {
         setBorder(null);
-        setBackground(Windows.LIGHT_GRAY);
+        setBackground(SSWindow.LIGHT_GRAY);
 
-        GridBagConstraints gbc = new GridBagConstraints();
+        var gbc = new GridBagConstraints();
 
-        SSTextArea notifications = new SSTextArea("Notifications");
+        var notifications = new SSTextArea("Notifications");
         gbc.weightx = 1;
         gbc.weighty = 1;
         gbc.insets.set(150, 50, 0, 0);

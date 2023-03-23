@@ -1,7 +1,7 @@
 package stocker.storage.view.component;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import stocker.storage.view.Windows;
+import stocker.storage.view.SSWindow;
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
 import java.awt.*;
@@ -11,9 +11,9 @@ public class SSTextField extends JTextField {
     public SSTextField() {
         super();
         setForeground(Color.white);
-        setFont(Windows.PLAIN_FONT);
+        setFont(SSWindow.PLAIN_FONT);
         setOpaque(false);
-        setBorder(new CustomLineBorder(Windows.DARK_GRAY, 1, 10));
+        setBorder(new CustomLineBorder(SSWindow.DARK_GRAY, 1, 10));
     }
 
     public SSTextField(int columns) {
@@ -23,7 +23,7 @@ public class SSTextField extends JTextField {
 
     @Override
     public Insets getInsets() {
-        Insets insets = super.getInsets();
+        var insets = super.getInsets();
         insets.left += 5;
         insets.right += 5;
         return insets;
@@ -31,7 +31,7 @@ public class SSTextField extends JTextField {
 
     @Override
     protected void paintComponent(@NotNull Graphics g) {
-        g.setColor(Windows.LIGHTER_GRAY);
+        g.setColor(SSWindow.LIGHTER_GRAY);
         g.fillRoundRect(0, 0, getWidth(), getHeight(), 10, 10);
         super.paintComponent(g);
     }
@@ -49,11 +49,11 @@ public class SSTextField extends JTextField {
 
         @Override
         public void paintBorder(Component c, @NotNull Graphics g, int x, int y, int width, int height) {
-            Graphics2D g2d = (Graphics2D) g.create();
+            var g2d = (Graphics2D) g.create();
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             g2d.setColor(color);
             g2d.setStroke(new BasicStroke(thickness, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-            Shape shape = new RoundRectangle2D.Float(x + thickness / 2f, y + thickness / 2f, width - thickness, height - thickness, arc, arc);
+            var shape = new RoundRectangle2D.Float(x+thickness/2f, y+thickness/2f, width-thickness, height-thickness, arc, arc);
             g2d.draw(shape);
             g2d.dispose();
         }

@@ -1,5 +1,5 @@
 package stocker.storage.view.pages;
-import stocker.storage.view.Windows;
+import stocker.storage.view.SSWindow;
 import stocker.storage.view.component.SSPanel;
 import stocker.storage.view.component.SSTextArea;
 import java.awt.*;
@@ -7,11 +7,11 @@ import java.awt.*;
 public class ErrorsPage extends SSPanel {
     public ErrorsPage() {
         setBorder(null);
-        setBackground(Windows.LIGHT_GRAY);
+        setBackground(SSWindow.LIGHT_GRAY);
 
-        GridBagConstraints gbc = new GridBagConstraints();
+        var gbc = new GridBagConstraints();
 
-        SSTextArea errorsPage = new SSTextArea("Errors");
+        var errorsPage = new SSTextArea("Errors");
         errorsPage.setForeground(Color.red);
 
         gbc.weightx = 1;

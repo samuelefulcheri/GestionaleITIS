@@ -1,5 +1,5 @@
 package stocker.storage.view.component;
-import stocker.storage.view.Windows;
+import stocker.storage.view.SSWindow;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicButtonUI;
 import java.awt.*;
@@ -7,18 +7,19 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class SSButton extends JButton {
-    private Color color = Windows.LIGHT_GRAY;
+    private Color color = SSWindow.LIGHT_GRAY;
 
     public SSButton() {
         super();
         setBackground(color);
-        setBorder(Windows.SS_BORDER);
+        setBorder(SSWindow.SS_BORDER);
         setForeground(Color.white);
-        setFont(Windows.PLAIN_FONT);
+        setFont(SSWindow.PLAIN_FONT);
+        setFocusable(false);
         setUI(new BasicButtonUI() {
             @Override
             protected void paintButtonPressed(Graphics g, AbstractButton button) {
-                button.setBackground(Windows.DARK_GRAY);
+                button.setBackground(SSWindow.DARK_GRAY);
             }
 
             @Override

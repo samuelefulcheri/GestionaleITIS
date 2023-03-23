@@ -1,7 +1,8 @@
 package stocker.storage.view.pages;
+import org.jetbrains.annotations.NotNull;
 import stocker.storage.Main;
 import stocker.storage.controller.Login;
-import stocker.storage.view.Windows;
+import stocker.storage.view.SSWindow;
 import stocker.storage.view.component.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -13,7 +14,7 @@ public class LoginPage extends SSPanel {
 
     public LoginPage() {
         setBorder(null);
-        setBackground(Windows.LIGHT_GRAY);
+        setBackground(SSWindow.LIGHT_GRAY);
         setLayout(new GridBagLayout());
 
         emailField = new SSTextField(50);
@@ -21,7 +22,7 @@ public class LoginPage extends SSPanel {
 
         var gbc = new GridBagConstraints();
 
-        var login = new SSTextArea("Login");
+        var login = new SSTextArea("Accedi");
         login.setLineWrap(false);
 
         gbc.insets.set(10, 10, 10, 10);
@@ -52,21 +53,21 @@ public class LoginPage extends SSPanel {
         gbc.gridx = 1;
         add(passwordField, gbc);
 
-        var loginButton = new SSButton("Login");
-        loginButton.setColor(Windows.LIGHTER_GRAY);
-        loginButton.setBackground(Windows.LIGHTER_GRAY);
+        var loginButton = new SSButton("Accedi");
+        loginButton.setColor(SSWindow.LIGHTER_GRAY);
+        loginButton.setBackground(SSWindow.LIGHTER_GRAY);
         loginButton.setPreferredSize(new Dimension(0, 50));
 
         loginButton.addActionListener(e -> azionePulsante());
 
-        //TODO: Farlo funzionante
-        setFocusable(true);
-        addKeyListener(new KeyAdapter() {
+        var keyListener = new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e) {
+            public void keyPressed(@NotNull KeyEvent e) {
                 if(e.getKeyCode() == KeyEvent.VK_ENTER) azionePulsante();
             }
-        });
+        }; Main.window.addKeyListener(keyListener);
+        emailField.addKeyListener(keyListener);
+        passwordField.addKeyListener(keyListener);
 
         gbc.gridx = 0;
         gbc.gridy = 3;
@@ -81,8 +82,8 @@ public class LoginPage extends SSPanel {
 
         if(Login.login(email, password)) {
             new Message("Accesso effettuato", "Benvenuto " + Login.decode(Main.currentUser.name()) + "!", true);
-            Windows.currentStatus = Pages.WELCOME_PAGE;
-            Windows.cambiaPagina();
+            SSWindow.currentStatus = Pages.WELCOME_PAGE;
+            SSWindow.cambiaPagina();
         }else new Message("E-Mail o Password errate.");
     }
 }

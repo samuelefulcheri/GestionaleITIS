@@ -1,7 +1,7 @@
 package stocker.storage.view.component;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import stocker.storage.view.Windows;
+import stocker.storage.view.SSWindow;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
@@ -14,12 +14,12 @@ public class SSScrollPane extends JScrollPane {
         setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         setBorder(null);
 
-        JScrollBar verticalScrollBar = getVerticalScrollBar();
+        var verticalScrollBar = getVerticalScrollBar();
         verticalScrollBar.setUI(new SSScrollBarUI());
         verticalScrollBar.setUnitIncrement(16);
         verticalScrollBar.setBackground(null);
 
-        JScrollBar horizontalScrollBar = getHorizontalScrollBar();
+        var horizontalScrollBar = getHorizontalScrollBar();
         horizontalScrollBar.setUI(new SSScrollBarUI());
         horizontalScrollBar.setBackground(null);
     }
@@ -51,14 +51,15 @@ public class SSScrollPane extends JScrollPane {
 
         @Override
         protected void paintTrack(@NotNull Graphics g, JComponent c, @NotNull Rectangle trackBounds) {
-            g.setColor(Windows.LIGHT_GRAY);
+            g.setColor(SSWindow.LIGHT_GRAY);
             g.fillRect(trackBounds.x, trackBounds.y, trackBounds.width, trackBounds.height);
         }
 
         @Override
         protected void paintThumb(@NotNull Graphics g, JComponent c, @NotNull Rectangle thumbBounds) {
-            g.setColor(Windows.DARK_GRAY);
-            ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g.setColor(SSWindow.DARK_GRAY);
+            var gd2 = (Graphics2D) g;
+            gd2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             g.fillRoundRect(thumbBounds.x, thumbBounds.y, thumbBounds.width, thumbBounds.height, 10, 10);
         }
     }

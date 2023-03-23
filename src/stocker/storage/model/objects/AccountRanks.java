@@ -1,5 +1,4 @@
 package stocker.storage.model.objects;
-
 import org.jetbrains.annotations.Nullable;
 
 public enum AccountRanks {
@@ -13,7 +12,7 @@ public enum AccountRanks {
     }
 
     public static @Nullable AccountRanks getRankFromString(String value) {
-        for(AccountRanks rank: AccountRanks.values())
+        for(var rank: AccountRanks.values())
             if(rank.value.equals(value)) return rank;
 
         return null;

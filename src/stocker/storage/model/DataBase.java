@@ -11,7 +11,7 @@ public class DataBase {
 
     public DataBase() throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
-        conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\x\\OneDrive\\Desktop\\Tutto\\Scuola\\Informatica\\GPOI\\GestionaleITIS\\GestionaleITIS.db");
+        conn = DriverManager.getConnection("jdbc:sqlite:GestionaleITIS.db");
     }
 
     public void create(@NotNull StorageObject object) throws SQLException {

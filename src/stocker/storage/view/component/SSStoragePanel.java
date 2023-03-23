@@ -1,6 +1,6 @@
 package stocker.storage.view.component;
 import org.jetbrains.annotations.NotNull;
-import stocker.storage.view.Windows;
+import stocker.storage.view.SSWindow;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
@@ -14,7 +14,7 @@ public class SSStoragePanel extends JPanel implements MouseWheelListener {
     public SSStoragePanel() {
         super();
         zoomFactor = 1.0F;
-        setBackground(Windows.LIGHTER_GRAY);
+        setBackground(SSWindow.LIGHTER_GRAY);
         addMouseWheelListener(this);
 
         add(new SSLabel("Testo di prova"));

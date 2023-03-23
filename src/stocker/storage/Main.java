@@ -1,11 +1,11 @@
 package stocker.storage;
 import stocker.storage.model.objects.*;
-import stocker.storage.view.Windows;
+import stocker.storage.view.SSWindow;
 import java.io.File;
 import java.util.Scanner;
 
 public class Main {
-    public static Windows windows;
+    public static SSWindow window;
     public static StorageAccount currentUser;
 
     public static final String extension = ".ss";
@@ -32,8 +32,8 @@ public class Main {
 
         // Grafica
 
-        windows = new Windows();
-        windows.welcomePage();
+        window = new SSWindow();
+        window.welcomePage();
 
 
         // Prova dati
