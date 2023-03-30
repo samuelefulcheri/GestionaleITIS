@@ -10,11 +10,19 @@
 |                 | Giacomo Gonella        | 19 gennaio 2023  |  
 |                 | Samuele Fulcheri       | 19 gennaio 2023  |
 
-# Storico delle variazioni
-| Versione | Data emissione   | Parte modificata    |
-|----------|------------------|---------------------|
-| Bozza    | 19 gennaio 2023  | Creazione documento |
-| Bozza(2) | 02 febbraio 2023 | Responsabilità      |
+## Storico delle variazioni
+| Versione       | Data emissione   | Parte modificata    |
+|----------------|------------------|---------------------|
+| First   commit | 19 gennaio 2023  | Creazione documento |
+| Second  commit | 02 febbraio 2023 | Intero Progetto     |
+| Third   commit | 09 febbraio 2023 | Intero Progetto     |
+| Fourth  commit | 16 febbraio 2023 | Intero Progetto     |
+| Fifth   commit | 23 febbraio 2023 | Intero Progetto     |
+| Sixth   commit | 02 marzo 2023    | Intero Progetto     |
+| Seventh commit | 09 marzo 2023    | Intero Progetto     |
+| Eight   commit | 23 marzo 2023    | Intero Progetto     |
+| Ninth   commit | 30 marzo 2023    | Intero Progetto     |
+
 
 # Sommario
 # 1 - Scopo e campo dell'applicazione
