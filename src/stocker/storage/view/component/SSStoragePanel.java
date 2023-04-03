@@ -2,15 +2,11 @@ package stocker.storage.view.component;
 import org.jetbrains.annotations.NotNull;
 import stocker.storage.view.SSWindow;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class SSStoragePanel extends JPanel implements MouseWheelListener {
     private float zoomFactor;
-    private float zoom = 1;
 
     public SSStoragePanel() {
         super();
@@ -35,11 +31,11 @@ public class SSStoragePanel extends JPanel implements MouseWheelListener {
     @Override
     public void mouseWheelMoved(@NotNull MouseWheelEvent e) {
         zoomFactor = (e.getWheelRotation() < 0) ? 1.1F : 0.9F;
-        zoom *= zoomFactor;
-
-        System.out.println(zoom);
 
         var size = getParent().getSize();
+
+        if((size.width+size.height) > 5000 && zoomFactor == 1.1F) return;
+
         setPreferredSize(size.width*zoomFactor, size.height*zoomFactor);
         revalidate();
 
@@ -65,6 +61,7 @@ public class SSStoragePanel extends JPanel implements MouseWheelListener {
         setPreferredSize(shelf, getHeight(), getWidth());
         add(shelf);
         shelf.revalidate();
+        revalidate();
         setVisible(true);
     }
 
@@ -75,19 +72,32 @@ public class SSStoragePanel extends JPanel implements MouseWheelListener {
         var objectHeight = (int) (screenHeight*0.005);
 
         var shelfPanel = new JPanel(new GridLayout(y, x));
-        shelfPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 10, true));
-        shelfPanel.setBackground(Color.GRAY);
+        shelfPanel.setBorder(BorderFactory.createLineBorder(SSWindow.GRAY, 2, true));
+        shelfPanel.setBackground(SSWindow.GRAY);
 
         for(int i = 0; i < x*y; i++) {
             JPanel objectPanel = new JPanel();
             objectPanel.setPreferredSize(new Dimension(objectWidth, objectHeight));
             objectPanel.setBackground(Color.WHITE);
-            objectPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 5, true));
-            shelfPanel.add(objectPanel);
+            objectPanel.setBorder(BorderFactory.createLineBorder(SSWindow.GRAY, 1, true));
+            objectPanel.addMouseMotionListener(new MouseMotionAdapter() {
+                @Override
+                public void mouseMoved(MouseEvent e) {
+                    var x = e.getX();
+                    var y = e.getY();
+
+                    var xPanel = objectPanel.getX();
+                    var yPanel = objectPanel.getY();
+
+                    if((x >= xPanel && x <= xPanel+objectHeight) && (y >= yPanel && x <= yPanel+objectWidth))
+                        objectPanel.setBackground(SSWindow.LIGHTER_GRAY);
+                    else objectPanel.setBackground(Color.white);
+                }
+            }); shelfPanel.add(objectPanel);
             if((i+1)%x == 0 && i != x*y-1) {
                 JPanel dividerPanel = new JPanel();
                 dividerPanel.setPreferredSize(new Dimension(screenWidth, 5));
-                dividerPanel.setBackground(Color.GRAY);
+                dividerPanel.setBackground(SSWindow.GRAY);
                 shelfPanel.add(dividerPanel);
             }
         } return shelfPanel;
