@@ -2,7 +2,6 @@ package stocker.storage.view.pages;
 import stocker.storage.model.objects.StorageObject;
 import stocker.storage.model.objects.StorageObjectType;
 import stocker.storage.model.objects.StorageShelf;
-import stocker.storage.view.SSWindow;
 import stocker.storage.view.component.SSPanel;
 import stocker.storage.view.component.SSStoragePanel;
 import java.awt.*;
@@ -10,7 +9,6 @@ import java.awt.*;
 public class StoragePage extends SSPanel {
     public StoragePage() {
         setBorder(null);
-        setBackground(SSWindow.LIGHT_GRAY);
 
         var gbc = new GridBagConstraints();
 
