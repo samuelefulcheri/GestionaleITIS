@@ -21,9 +21,11 @@ public class StoragePage extends SSPanel {
         var object = new StorageObject(1, "penne", 2, 3, StorageObjectType.IMPORT);
         var shelf = new StorageShelf(1, 5, 5);
 
-        shelf.addObject(object);
+        if(!shelf.addObject(object)) return;
 
         storage.paintStorage(shelf.getShelf());
+        var matches = shelf.getObjects("");
+        if(!matches.isEmpty()) System.out.println(matches);
 
         setVisible(true);
     }

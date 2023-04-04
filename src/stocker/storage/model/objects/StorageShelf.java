@@ -1,6 +1,7 @@
 package stocker.storage.model.objects;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class StorageShelf {
     private final int id;
@@ -15,7 +16,7 @@ public class StorageShelf {
         this.sizeY = sizeY;
         shelf = new boolean[sizeY][sizeX];
         for(var y = 0; y < sizeY; y++)
-            for(var x = 0; x < sizeX; x++) shelf[y][x] = true;
+            Arrays.fill(shelf[y], true);
         content = new ArrayList<>();
     }
 
