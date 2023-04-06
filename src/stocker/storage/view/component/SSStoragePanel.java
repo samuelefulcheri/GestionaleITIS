@@ -6,28 +6,11 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class SSStoragePanel extends JPanel {
-    private float zoom;
-
     public SSStoragePanel() {
         super();
-        zoom = 1.0F;
         setBackground(SSWindow.LIGHT_GRAY);
 
-        addMouseWheelListener(e -> {
-            zoom = (e.getWheelRotation() < 0) ? 1.1F : 0.9F;
-            var size = getParent().getSize();
-            if((size.width+size.height) > 5000 && zoom == 1.1F) return;
-
-            setPreferredSize(size.width* zoom, size.height* zoom);
-            revalidate();
-
-            var components = getComponents();
-            for(var component: components) {
-                var cmpSize = getSize();
-                setPreferredSize(component, cmpSize.width* zoom, cmpSize.height* zoom);
-                component.revalidate();
-            }
-        });
+        addMouseWheelListener(e -> resizeEvent((e.getWheelRotation() < 0) ? 1.1F : .9F));
 
         addComponentListener(new ComponentAdapter() {
             @Override
@@ -39,6 +22,21 @@ public class SSStoragePanel extends JPanel {
                 revalidate();
             }
         });
+    }
+
+    public void resizeEvent(float zoom) {
+        var size = getParent().getSize();
+        if((size.width+size.height) > 5000 && zoom == 1.1F) return;
+
+        setPreferredSize(size.width*zoom, size.height*zoom);
+        revalidate();
+
+        var components = getComponents();
+        for(var component: components) {
+            var cmpSize = getSize();
+            setPreferredSize(component, cmpSize.width*zoom, cmpSize.height*zoom);
+            component.revalidate();
+        }
     }
 
     private void setPreferredSize(float size1, float size2) {
@@ -55,10 +53,6 @@ public class SSStoragePanel extends JPanel {
         var shelf = buildShelf(storage.length, storage[0].length);
         setPreferredSize(shelf, getHeight(), getWidth());
         add(shelf);
-
-        shelf.revalidate();
-        revalidate();
-        setVisible(true);
     }
 
     public static @NotNull JPanel buildShelf(int x, int y) {
@@ -69,7 +63,7 @@ public class SSStoragePanel extends JPanel {
         shelfPanel.setBorder(new RoundBorder(10, SSWindow.DARK_GRAY));
         shelfPanel.setBackground(SSWindow.LIGHTER_GRAY);
 
-        for(int i = 0; i < x*y; i++) {
+        for(var i = 0; i < x*y; i++) {
             var objectPanel = new SSRoundPanel(25, new RoundBorder(25, SSWindow.DARK_GRAY));
             objectPanel.setBackground(SSWindow.LIGHTER_GRAY);
 
