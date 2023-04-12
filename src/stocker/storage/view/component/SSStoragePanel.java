@@ -72,38 +72,76 @@ public class SSStoragePanel extends JPanel {
             var objectPanel = new SSRoundPanel(25, new RoundBorder(25, SSWindow.DARK_GRAY));
             objectPanel.setBackground(SSWindow.LIGHTER_GRAY);
 
+            jx = (i%x == 0) ? 0 : jx+1;
+            if(i%x == 0 && i != 0) jy++;
+
+            objectPanel.setUsed(shelf.isUsed(jx, jy));
+
+            if(objectPanel.isUsed()) {
+                var label = new SSLabel("Used");
+                objectPanel.add(label);
+            }
+
             objectPanel.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    ((JPanel) e.getSource()).setBackground(SSWindow.LIGHT_GRAY);
+                    var thisPanel = (SSRoundPanel) e.getSource();
+                    thisPanel.setBackground(SSWindow.LIGHT_GRAY);
                 }
 
                 @Override
                 public void mouseExited(MouseEvent e) {
-                    ((JPanel) e.getSource()).setBackground(SSWindow.LIGHTER_GRAY);
+                    var thisPanel = (SSRoundPanel) e.getSource();
+                    thisPanel.setBackground(SSWindow.LIGHTER_GRAY);
                 }
             });
 
-            try{
-                if(shelf.isUsed(jy, jx)) {
-                    var label = new SSLabel("Used");
-                    objectPanel.add(label);
+            var toolTip = new SSToolTip();
+            toolTip.setTipText("Used");
+
+            objectPanel.addMouseMotionListener(new MouseMotionAdapter() {
+                private Timer timer;
+
+                @Override
+                public void mouseMoved(MouseEvent e) {
+                    var x = e.getX();
+                    var y = e.getY();
+
+                    if(timer == null || !timer.isRunning()) {
+                        timer = new Timer(500, e1 -> {
+                            timer.stop();
+
+                            if(x != e.getX() || y != e.getY()) {
+                                var thisPanel = (SSRoundPanel) e.getSource();
+                                if(thisPanel.isUsed()) {
+                                    if(thisPanel.isUsed()) thisPanel.remove(toolTip);
+                                    thisPanel.revalidate();
+                                } return;
+                            }
+
+                            Rectangle area = objectPanel.getBounds();
+                            if(area.contains(x, y)) {
+                                var thisPanel = (SSRoundPanel) e.getSource();
+                                if(thisPanel.isUsed()) {
+                                    thisPanel.setLayout(null);
+                                    toolTip.setBounds(x, y, 50, 50);
+                                    thisPanel.add(toolTip);
+                                    thisPanel.revalidate();
+                                }
+                            }else{
+                                var thisPanel = (SSRoundPanel) e.getSource();
+                                if(thisPanel.isUsed()) {
+                                    if(thisPanel.isUsed()) thisPanel.remove(toolTip);
+                                    thisPanel.revalidate();
+                                }
+                            }
+                        }); timer.setRepeats(false);
+                        timer.start();
+                    }
                 }
-            }catch (Exception ignored) { }
+            });
 
             shelfPanel.add(objectPanel);
-
-            /*if(jx+1 != x)*/ jx = (i%x == 0) ? 0 : jx+1;
-            if(i%x == 0 /*&& jx+1 != y*/) jy++;
-        }
-
-        var shelfMatrix = shelf.getShelf();
-        for(var i: shelfMatrix) {
-            for(var j: i) {
-                if(j) System.out.print("o");
-                else System.out.print("x");
-                System.out.print(" ");
-            } System.out.println();
         }
 
         return shelfPanel;

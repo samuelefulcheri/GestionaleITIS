@@ -5,12 +5,14 @@ import javax.swing.*;
 public class SSRoundPanel extends JPanel {
     private final int arcWidth;
     private final int arcHeight;
+    private boolean isUsed;
 
     public SSRoundPanel(int radius, RoundBorder border) {
         arcWidth = radius;
         arcHeight = radius;
         setOpaque(false);
         setBorder(border);
+        isUsed = false;
     }
 
     @Override
@@ -26,5 +28,12 @@ public class SSRoundPanel extends JPanel {
     public void setBackground(Color bg) {
         super.setBackground(bg);
         repaint();
+    }
+
+    public boolean isUsed() {
+        return isUsed;
+    }
+    public void setUsed(boolean used) {
+        isUsed = used;
     }
 }
