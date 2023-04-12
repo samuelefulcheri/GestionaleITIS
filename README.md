@@ -59,7 +59,7 @@ adattato anche in altri.
 Java è un linguaggio di programmazione ampiamente utilizzato, soprattutto per la
 sua ampia compatibilità con tutti i sistemi operativi senza dover ricompilare o
 apportare modifiche al codice. Il codice viene eseguito su una Virtual Machine
-e ciò lo rende estremamente sicuro rispetto ad altre alternative. E' inoltre uno
+e ciò lo rende estremamente sicuro rispetto ad altre alternative. È inoltre uno
 dei linguaggi di programmazione più performanti al mondo, può competere quindi con
 alternative come C, C++ e Rust.
 
