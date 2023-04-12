@@ -93,7 +93,7 @@ public class StorageShelf {
                 shelf[y][x] = false;
     }
 
-    private boolean isUsed(int x, int y) {
+    public boolean isUsed(int x, int y) {
         return !shelf[y][x];
     }
     private int getFree() {

@@ -23,7 +23,7 @@ public class StoragePage extends SSPanel {
 
         if(!shelf.addObject(object)) return;
 
-        storage.paintStorage(shelf.getShelf());
+        storage.paintStorage(shelf);
         var matches = shelf.getObjects("");
         if(!matches.isEmpty()) System.out.println(matches);
 
