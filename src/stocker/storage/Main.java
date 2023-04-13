@@ -13,7 +13,6 @@ public class Main {
 
     public static void main(String[] args) {
         // Ricorda i dati di accesso dell'utente
-        System.out.println("Hello World");
         try{
             var input = new Scanner(new File("saves\\user" + extension));
             var line = input.nextLine();
