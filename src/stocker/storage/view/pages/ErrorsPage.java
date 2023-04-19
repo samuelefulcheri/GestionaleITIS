@@ -1,8 +1,8 @@
 package stocker.storage.view.pages;
 import stocker.storage.view.SSWindow;
+import stocker.storage.view.component.SSLabel;
 import stocker.storage.view.component.SSPanel;
 import stocker.storage.view.component.SSTextArea;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,45 +10,38 @@ public class ErrorsPage extends SSPanel {
     public ErrorsPage() {
         setBorder(null);
         setBackground(SSWindow.LIGHT_GRAY);
-        setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
 
-        var errorsPage = new SSTextArea("Errors");
-        errorsPage.setForeground(Color.red);
-        errorsPage.setEditable(false);
-        add(errorsPage);
+
+        var errorsPanel = new SSPanel();
+        errorsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
+
+        var gbc = new GridBagConstraints();
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        gbc.fill = 1;
+
+        add(errorsPanel, gbc);
 
         var errorPanel = new SSPanel();
-        errorPanel.setLayout(new GridLayout(2, 1));
-        errorPanel.setBorder(BorderFactory.createLineBorder(Color.black, 1));
+        errorPanel.setBorder(BorderFactory.createLineBorder(SSWindow.DARK_GRAY, 1));
 
-        var errorTextTitle = new JLabel("ERRORE!:");
+        gbc.weightx = 1;
+        gbc.weighty = .2;
+
+        var errorTextTitle = new SSLabel("ERRORE:");
+        errorTextTitle.setFont(new Font("Arial", Font.PLAIN, 40));
         errorTextTitle.setForeground(Color.red);
-        errorPanel.add(errorTextTitle);
+        errorPanel.add(errorTextTitle, gbc);
+
+        gbc.weighty = .8;
+        gbc.gridy = 1;
 
         var errorText = new SSTextArea("C'è stato un errore nel programma.");
-        errorText.setEditable(false);
-        errorPanel.add(errorText);
-
-        add(errorPanel);
-    }
-
-        /*var gbc = new GridBagConstraints();
-
-        var errorsPage = new SSTextArea("Errors");
-        errorsPage.setForeground(Color.red);
-
-        gbc.weightx = 0.5;
-        gbc.weighty = 0.5;
-        //gbc.insets.set(150, 50, 0, 0);
-        gbc.fill = 1;
-        add(errorsPage, gbc);
-
-        var errorPanel = new SSPanel();
-        var errorText = new SSTextArea("Errore!");
+        errorText.setFont(SSWindow.PLAIN_FONT);
+        errorText.setLineWrap(false);
+        errorText.setWrapStyleWord(false);
         errorPanel.add(errorText, gbc);
-        gbc.gridy = 1;
-        add(errorPanel, gbc);*/
 
+        errorsPanel.add(errorPanel);
     }
-
 }
