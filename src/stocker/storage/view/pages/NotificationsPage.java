@@ -31,8 +31,6 @@ public class NotificationsPage extends SSPanel {
             add(notifics, gbc);
         }
 
-
-
         setVisible(true);
     }
 
