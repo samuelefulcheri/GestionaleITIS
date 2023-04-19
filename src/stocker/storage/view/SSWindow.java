@@ -140,7 +140,7 @@ public class SSWindow extends JFrame {
                 component = errorsPage;
                 previousStatus = Pages.ERRORS_PAGE;
             } case NOTIFICATIONS_PAGE -> {
-                notificationsPage = new NotificationsPage();
+                notificationsPage = new NotificationsPage("Notifica da visualizzare", "notifica 1", "notifica2");
                 component = notificationsPage;
                 previousStatus = Pages.NOTIFICATIONS_PAGE;
             } default -> {
