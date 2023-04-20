@@ -4,7 +4,8 @@ PRAGMA foreign_keys = ON;
 
 CREATE TABLE PRODUCT (
     productId INTEGER PRIMARY KEY AUTOINCREMENT,
-    productContent TEXT,
+    productContent INTEGER,
+    contentDescription TEXT,
     productHeight INTEGER,
     productWidth INTEGER,
     productType TEXT
