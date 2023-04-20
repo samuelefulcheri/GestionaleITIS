@@ -45,6 +45,7 @@ public class Login {
         }
     }
 
+
     @Contract(pure = true)
     public static @NotNull String nameValidation(@NotNull String name) {
         if(name.length() < 4)

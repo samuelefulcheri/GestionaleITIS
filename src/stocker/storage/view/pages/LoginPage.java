@@ -81,9 +81,9 @@ public class LoginPage extends SSPanel {
         var password = Login.encode(new String(passwordField.getPassword()));
 
         if(Login.login(email, password)) {
-            new Message("Accesso effettuato", "Benvenuto " + Login.decode(Main.currentUser.name()) + "!", true);
+            SSWindow.getNotificationsPage().addNotifications("Accesso Effettuato", "Benvenuto" + Login.decode(Main.currentUser.name()) + "!");
+            //new Message("Accesso effettuato", "Benvenuto " + Login.decode(Main.currentUser.name()) + "!", true);
             SSWindow.currentStatus = Pages.WELCOME_PAGE;
             SSWindow.cambiaPagina();
-        }else new Message("E-Mail o Password errate.");
+        }else SSWindow.getNotificationsPage().addNotifications("E-Mail o Password errate.");
     }
-}

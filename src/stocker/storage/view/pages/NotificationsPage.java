@@ -1,4 +1,5 @@
 package stocker.storage.view.pages;
+import stocker.storage.controller.Login;
 import stocker.storage.view.SSWindow;
 import stocker.storage.view.component.*;
 
@@ -9,7 +10,13 @@ public class NotificationsPage extends SSPanel {
 
     private static final int NOTIFICATION_WIDTH = 200;
     private static final int NOTIFICATION_HEIGHT = 300;
-    public NotificationsPage(String... texts) {
+    public NotificationsPage() {
+        if (Login.login()){
+            addNotifications("Accesso eseguito");
+        }
+    }
+
+    void addNotifications(String... texts){
         setSize(NOTIFICATION_WIDTH, NOTIFICATION_HEIGHT);
 
         var notifics = new SSPanel();
