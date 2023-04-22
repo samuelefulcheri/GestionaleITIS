@@ -18,7 +18,7 @@ public class StoragePage extends SSPanel {
         gbc.fill = 1;
         add(storage, gbc);
 
-        var object = new StorageObject(1, "penne", 2, 3, StorageObjectType.IMPORT);
+        var object = new StorageObject(1, null, "penne", 2, 3, StorageObjectType.IMPORT);
         var shelf = new StorageShelf(1, 5, 5);
 
         if(!shelf.addObject(object)) return;
