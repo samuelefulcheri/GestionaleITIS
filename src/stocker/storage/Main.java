@@ -34,7 +34,5 @@ public class Main {
 
         window = new SSWindow();
         window.welcomePage();
-
-        SSWindow.notificationsPage.addNotifications("Notifica di prova.");
     }
 }
