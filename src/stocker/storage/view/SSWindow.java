@@ -28,12 +28,12 @@ public class SSWindow extends JFrame {
     public static Pages currentStatus;
     private static Pages previousStatus;
 
-    private static WelcomePage welcomePage;
-    private static StoragePage storagePage;
-    private static RegistrationPage registrationPage;
-    private static LoginPage loginPage;
-    private static ErrorsPage errorsPage;
-    private static NotificationsPage notificationsPage;
+    public static WelcomePage welcomePage;
+    public static StoragePage storagePage;
+    public static RegistrationPage registrationPage;
+    public static LoginPage loginPage;
+    public static ErrorsPage errorsPage = new ErrorsPage();
+    public static NotificationsPage notificationsPage = new NotificationsPage();
 
     public SSWindow() {
         super("Stocker Storage");
@@ -80,7 +80,7 @@ public class SSWindow extends JFrame {
         add(scroll, gbc);
 
         try{
-            var image = ImageIO.read(new File("Icon.png"));
+            var image = ImageIO.read(new File("saves\\icon.png"));
             setIconImage(image);
         }catch(Exception ignored) { }
 
@@ -136,11 +136,9 @@ public class SSWindow extends JFrame {
                 component = loginPage;
                 previousStatus = Pages.LOGIN_PAGE;
             } case ERRORS_PAGE -> {
-                errorsPage = new ErrorsPage();
                 component = errorsPage;
                 previousStatus = Pages.ERRORS_PAGE;
             } case NOTIFICATIONS_PAGE -> {
-                notificationsPage = new NotificationsPage();
                 component = notificationsPage;
                 previousStatus = Pages.NOTIFICATIONS_PAGE;
             } default -> {
@@ -159,4 +157,3 @@ public class SSWindow extends JFrame {
         Main.window.setVisible(true);
     }
 }
-
