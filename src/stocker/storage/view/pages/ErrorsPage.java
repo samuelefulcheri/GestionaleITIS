@@ -19,7 +19,5 @@ public class ErrorsPage extends SSPanel {
         gbc.insets.set(150, 50, 0, 0);
         gbc.fill = 1;
         add(errorsPage, gbc);
-
-
     }
 }
