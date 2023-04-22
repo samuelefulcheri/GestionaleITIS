@@ -80,7 +80,7 @@ public class SSWindow extends JFrame {
         add(scroll, gbc);
 
         try{
-            var image = ImageIO.read(new File("Icon.png"));
+            var image = ImageIO.read(new File("saves\\icon.png"));
             setIconImage(image);
         }catch(Exception ignored) { }
 
