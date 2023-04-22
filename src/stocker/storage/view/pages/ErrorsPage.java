@@ -3,7 +3,6 @@ import stocker.storage.view.SSWindow;
 import stocker.storage.view.component.SSLabel;
 import stocker.storage.view.component.SSPanel;
 import stocker.storage.view.component.SSTextArea;
-import javax.swing.*;
 import java.awt.*;
 
 public class ErrorsPage extends SSPanel {

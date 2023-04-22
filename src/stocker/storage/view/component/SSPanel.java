@@ -1,6 +1,5 @@
 package stocker.storage.view.component;
 import stocker.storage.view.SSWindow;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,5 +10,4 @@ public class SSPanel extends JPanel {
         setBorder(SSWindow.SS_BORDER);
         setLayout(new GridBagLayout());
     }
-
 }
