@@ -101,38 +101,34 @@ public class SSStoragePanel extends JPanel {
 
             objectPanel.addMouseMotionListener(new MouseMotionAdapter() {
                 private Timer timer;
+                private int px;
+                private int py;
 
                 @Override
                 public void mouseMoved(MouseEvent e) {
                     var x = e.getX();
                     var y = e.getY();
 
+                    var thisPanel = (SSRoundPanel) e.getSource();
+                    if(thisPanel.isUsed() && (px != e.getX() || py != e.getY())) {
+                        if(thisPanel.isUsed()) thisPanel.remove(toolTip);
+                        thisPanel.revalidate();
+                    }
+
                     if(timer == null || !timer.isRunning()) {
                         timer = new Timer(500, e1 -> {
                             timer.stop();
 
-                            if(x != e.getX() || y != e.getY()) {
-                                var thisPanel = (SSRoundPanel) e.getSource();
-                                if(thisPanel.isUsed()) {
-                                    if(thisPanel.isUsed()) thisPanel.remove(toolTip);
-                                    thisPanel.revalidate();
-                                } return;
-                            }
-
                             Rectangle area = objectPanel.getBounds();
-                            if(area.contains(x, y)) {
-                                var thisPanel = (SSRoundPanel) e.getSource();
-                                if(thisPanel.isUsed()) {
+                            if(area.contains(e.getX(), e.getY())) {
+                                if(thisPanel.isUsed() && (x == e.getX() && y == e.getY())) {
                                     thisPanel.setLayout(null);
                                     toolTip.setBounds(x, y, 50, 50);
                                     thisPanel.add(toolTip);
                                     thisPanel.revalidate();
-                                }
-                            }else{
-                                var thisPanel = (SSRoundPanel) e.getSource();
-                                if(thisPanel.isUsed()) {
-                                    if(thisPanel.isUsed()) thisPanel.remove(toolTip);
-                                    thisPanel.revalidate();
+
+                                    px = x;
+                                    py = y;
                                 }
                             }
                         }); timer.setRepeats(false);
