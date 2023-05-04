@@ -4,10 +4,12 @@ PRAGMA foreign_keys = ON;
 
 CREATE TABLE PRODUCT (
     productId INTEGER PRIMARY KEY AUTOINCREMENT,
-    productContent TEXT,
+    productContentId INTEGER,
+    contentDescription TEXT,
     productHeight INTEGER,
     productWidth INTEGER,
-    productType TEXT
+    productType TEXT,
+    FOREIGN KEY (productContentId) REFERENCES PRODUCT(productId)
 );
 
 CREATE TABLE SHELF (
