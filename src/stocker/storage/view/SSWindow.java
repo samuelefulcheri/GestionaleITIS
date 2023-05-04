@@ -28,10 +28,10 @@ public class SSWindow extends JFrame {
     public static Pages currentStatus;
     private static Pages previousStatus;
 
-    public static WelcomePage welcomePage;
-    public static StoragePage storagePage;
-    public static RegistrationPage registrationPage;
-    public static LoginPage loginPage;
+    private static WelcomePage welcomePage;
+    private static StoragePage storagePage;
+    private static RegistrationPage registrationPage;
+    private static LoginPage loginPage;
     public static ErrorsPage errorsPage = new ErrorsPage();
     public static NotificationsPage notificationsPage = new NotificationsPage();
 

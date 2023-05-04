@@ -109,10 +109,16 @@ public class RegistrationPage extends SSPanel {
             password = Login.encode(password);
 
             if(Login.register(safeName, email, password)) {
+                SSWindow.notificationsPage.addNotifications("Registrazione effettuata!", "Benvenuto " + name + "!");
                 new Message("Registrazione effettuata!", "Benvenuto " + name + "!", true);
                 SSWindow.currentStatus = Pages.LOGIN_PAGE;
                 SSWindow.cambiaPagina();
-            }else new Message("E-Mail o Password errate.");
-        }else new Message(errorMessages);
+            }else{
+                SSWindow.notificationsPage.addNotifications("E-Mail o Password errate.");
+                new Message("E-Mail o Password errate.");
+            }
+        }else{
+            new Message(errorMessages);
+        }
     }
 }
