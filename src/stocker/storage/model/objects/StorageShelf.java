@@ -35,7 +35,7 @@ public class StorageShelf {
     public ArrayList<StorageObject> getObjects(String search) {
         ArrayList<StorageObject> results = new ArrayList<>();
         for(var obj: content)
-            if(obj.content().equals(search)) results.add(obj);
+            if(obj.contentDescription().equals(search)) results.add(obj);
 
         return results;
     }
