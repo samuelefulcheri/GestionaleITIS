@@ -13,19 +13,20 @@ public class StoragePage extends SSPanel {
         var gbc = new GridBagConstraints();
 
         var storage = new SSStoragePanel();
+
         gbc.weightx = 1;
         gbc.weighty = 1;
         gbc.fill = 1;
+
         add(storage, gbc);
 
         var object = new StorageObject(1, null, "penne", 2, 3, StorageObjectType.IMPORT);
         var shelf = new StorageShelf(1, 5, 5);
 
+        // TODO: Errore
         if(!shelf.addObject(object)) return;
 
         storage.paintStorage(shelf);
-        var matches = shelf.getObjects("");
-        if(!matches.isEmpty()) System.out.println(matches);
 
         setVisible(true);
     }

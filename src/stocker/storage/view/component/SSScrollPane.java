@@ -10,8 +10,7 @@ public class SSScrollPane extends JScrollPane {
     public SSScrollPane(Component component) {
         super(component);
 
-        setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        setBackground(SSWindow.LIGHT_GRAY);
         setBorder(null);
 
         var verticalScrollBar = getVerticalScrollBar();
@@ -47,20 +46,13 @@ public class SSScrollPane extends JScrollPane {
             };
         }
 
-        // TODO: Fixare pixel bianco errore
+        @Override
+        protected void paintTrack(@NotNull Graphics g, JComponent c, @NotNull Rectangle r) { }
 
         @Override
-        protected void paintTrack(@NotNull Graphics g, JComponent c, @NotNull Rectangle trackBounds) {
-            g.setColor(SSWindow.LIGHT_GRAY);
-            g.fillRect(trackBounds.x, trackBounds.y, trackBounds.width, trackBounds.height);
-        }
-
-        @Override
-        protected void paintThumb(@NotNull Graphics g, JComponent c, @NotNull Rectangle thumbBounds) {
+        protected void paintThumb(@NotNull Graphics g, JComponent c, @NotNull Rectangle r) {
             g.setColor(SSWindow.DARK_GRAY);
-            var gd2 = (Graphics2D) g;
-            gd2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            g.fillRoundRect(thumbBounds.x, thumbBounds.y, thumbBounds.width, thumbBounds.height, 10, 10);
+            g.fillRoundRect(r.x, r.y, r.width, r.height, 10, 10);
         }
     }
 }

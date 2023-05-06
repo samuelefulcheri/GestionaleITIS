@@ -18,7 +18,7 @@ public class ButtonsPanel extends SSPanel {
         });
 
         gbc.weightx = 1;
-        gbc.weighty = 0.05;
+        gbc.weighty = .05;
         gbc.insets.set(15, 15, 15, 15);
         gbc.fill = 1;
         add(storageButton, gbc);
@@ -50,7 +50,7 @@ public class ButtonsPanel extends SSPanel {
         emptyPanel.setBackground(SSWindow.GRAY);
 
         gbc.gridy = 3;
-        gbc.weighty = 0.75;
+        gbc.weighty = .75;
         gbc.insets.set(0, 0, 0, 0);
         add(emptyPanel, gbc);
 
@@ -64,7 +64,7 @@ public class ButtonsPanel extends SSPanel {
         });
 
         gbc.gridy = 4;
-        gbc.weighty = 0.05;
+        gbc.weighty = .05;
         gbc.insets.set(0, 15, 15, 15);
         add(errorsButton, gbc);
 
