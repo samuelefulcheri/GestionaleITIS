@@ -20,6 +20,7 @@ public class WelcomePage extends SSPanel {
         gbc.weighty = 1;
         gbc.insets.set(150, 50, 0, 0);
         gbc.fill = 1;
+
         add(welcome, gbc);
     }
 }

@@ -16,7 +16,6 @@ public class RegistrationPage extends SSPanel {
     public RegistrationPage() {
         setBorder(null);
         setBackground(SSWindow.LIGHT_GRAY);
-        setLayout(new GridBagLayout());
 
         nameField = new SSTextField(20);
         emailField = new SSTextField(50);
@@ -72,17 +71,18 @@ public class RegistrationPage extends SSPanel {
 
         var registerButton = new SSButton("Registrati");
         registerButton.setColor(SSWindow.LIGHTER_GRAY);
-        registerButton.setBackground(SSWindow.LIGHTER_GRAY);
         registerButton.setPreferredSize(new Dimension(0, 50));
 
-        registerButton.addActionListener(e -> azionePulsante());
+        registerButton.addActionListener(e -> action());
 
         var keyListener = new KeyAdapter() {
             @Override
             public void keyPressed(@NotNull KeyEvent e) {
-                if(e.getKeyCode() == KeyEvent.VK_ENTER) azionePulsante();
+                if(e.getKeyCode() == KeyEvent.VK_ENTER) action();
             }
-        }; Main.window.addKeyListener(keyListener);
+        };
+
+        Main.window.addKeyListener(keyListener);
         nameField.addKeyListener(keyListener);
         emailField.addKeyListener(keyListener);
         passwordField.addKeyListener(keyListener);
@@ -94,7 +94,7 @@ public class RegistrationPage extends SSPanel {
         add(registerButton, gbc);
     }
 
-    private void azionePulsante() {
+    private void action() {
         var name = nameField.getText().trim();
         var email = emailField.getText().replaceAll(" ", "");
         var password = new String(passwordField.getPassword());
@@ -112,7 +112,7 @@ public class RegistrationPage extends SSPanel {
                 new Message("Registrazione effettuata!", "Benvenuto " + name + "!", true);
                 SSWindow.currentStatus = Pages.LOGIN_PAGE;
                 SSWindow.cambiaPagina();
-            }else new Message("E-Mail o Password errate.");
+            }else new Message("Registrazione non eseguita.");
         }else new Message(errorMessages);
     }
 }
