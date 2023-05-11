@@ -15,7 +15,6 @@ public class LoginPage extends SSPanel {
     public LoginPage() {
         setBorder(null);
         setBackground(SSWindow.LIGHT_GRAY);
-        setLayout(new GridBagLayout());
 
         emailField = new SSTextField(50);
         passwordField = new SSPasswordField(20);
@@ -55,17 +54,18 @@ public class LoginPage extends SSPanel {
 
         var loginButton = new SSButton("Accedi");
         loginButton.setColor(SSWindow.LIGHTER_GRAY);
-        loginButton.setBackground(SSWindow.LIGHTER_GRAY);
         loginButton.setPreferredSize(new Dimension(0, 50));
 
-        loginButton.addActionListener(e -> azionePulsante());
+        loginButton.addActionListener(e -> action());
 
         var keyListener = new KeyAdapter() {
             @Override
             public void keyPressed(@NotNull KeyEvent e) {
-                if(e.getKeyCode() == KeyEvent.VK_ENTER) azionePulsante();
+                if(e.getKeyCode() == KeyEvent.VK_ENTER) action();
             }
-        }; Main.window.addKeyListener(keyListener);
+        };
+
+        Main.window.addKeyListener(keyListener);
         emailField.addKeyListener(keyListener);
         passwordField.addKeyListener(keyListener);
 
@@ -76,7 +76,7 @@ public class LoginPage extends SSPanel {
         add(loginButton, gbc);
     }
 
-    public void azionePulsante() {
+    public void action() {
         var email = Login.encode(emailField.getText().replaceAll(" ", ""));
         var password = Login.encode(new String(passwordField.getPassword()));
 
