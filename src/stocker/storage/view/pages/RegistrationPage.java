@@ -16,6 +16,7 @@ public class RegistrationPage extends SSPanel {
     public RegistrationPage() {
         setBorder(null);
         setBackground(SSWindow.LIGHT_GRAY);
+        setLayout(new GridBagLayout());
 
         nameField = new SSTextField(20);
         emailField = new SSTextField(50);
@@ -71,18 +72,17 @@ public class RegistrationPage extends SSPanel {
 
         var registerButton = new SSButton("Registrati");
         registerButton.setColor(SSWindow.LIGHTER_GRAY);
+        registerButton.setBackground(SSWindow.LIGHTER_GRAY);
         registerButton.setPreferredSize(new Dimension(0, 50));
 
-        registerButton.addActionListener(e -> action());
+        registerButton.addActionListener(e -> azionePulsante());
 
         var keyListener = new KeyAdapter() {
             @Override
             public void keyPressed(@NotNull KeyEvent e) {
-                if(e.getKeyCode() == KeyEvent.VK_ENTER) action();
+                if(e.getKeyCode() == KeyEvent.VK_ENTER) azionePulsante();
             }
-        };
-
-        Main.window.addKeyListener(keyListener);
+        }; Main.window.addKeyListener(keyListener);
         nameField.addKeyListener(keyListener);
         emailField.addKeyListener(keyListener);
         passwordField.addKeyListener(keyListener);
@@ -94,7 +94,7 @@ public class RegistrationPage extends SSPanel {
         add(registerButton, gbc);
     }
 
-    private void action() {
+    private void azionePulsante() {
         var name = nameField.getText().trim();
         var email = emailField.getText().replaceAll(" ", "");
         var password = new String(passwordField.getPassword());
@@ -109,10 +109,16 @@ public class RegistrationPage extends SSPanel {
             password = Login.encode(password);
 
             if(Login.register(safeName, email, password)) {
+                SSWindow.notificationsPage.addNotifications("Registrazione effettuata!", "Benvenuto " + name + "!");
                 new Message("Registrazione effettuata!", "Benvenuto " + name + "!", true);
                 SSWindow.currentStatus = Pages.LOGIN_PAGE;
                 SSWindow.cambiaPagina();
-            }else new Message("Registrazione non eseguita.");
-        }else new Message(errorMessages);
+            }else{
+                SSWindow.notificationsPage.addNotifications("E-Mail o Password errate.");
+                new Message("E-Mail o Password errate.");
+            }
+        }else{
+            new Message(errorMessages);
+        }
     }
 }
