@@ -118,6 +118,7 @@ public class RegistrationPage extends SSPanel {
                 new Message("E-Mail o Password errate.");
             }
         }else{
+            SSWindow.errorsPage.addErrors(errorMessages);
             new Message(errorMessages);
         }
     }

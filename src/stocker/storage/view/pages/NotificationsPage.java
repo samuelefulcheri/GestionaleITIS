@@ -26,6 +26,7 @@ public class NotificationsPage extends SSPanel {
 
             gbc.weightx = 1;
             gbc.weighty = 1;
+            gbc.gridx = 1;
             gbc.anchor = GridBagConstraints.NORTHWEST;
             gbc.insets.set(40, 20, 20, 20);
 
