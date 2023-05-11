@@ -1,47 +1,36 @@
 package stocker.storage.view.pages;
+import org.jetbrains.annotations.NotNull;
 import stocker.storage.view.SSWindow;
-import stocker.storage.view.component.SSLabel;
-import stocker.storage.view.component.SSPanel;
-import stocker.storage.view.component.SSTextArea;
+import stocker.storage.view.component.*;
 import javax.swing.*;
 import java.awt.*;
 
 public class ErrorsPage extends SSPanel {
-    public ErrorsPage() {
-        setBorder(null);
-        setBackground(SSWindow.LIGHT_GRAY);
+    private static final int ERRORS_WIDTH = 200;
+    private static final int ERRORS_HEIGHT = 300;
 
+    public void addErrors(String @NotNull ...texts) {
+        setSize(ERRORS_WIDTH, ERRORS_HEIGHT);
 
-        var errorsPanel = new SSPanel();
-        errorsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
+        var errors = new SSPanel();
+        errors.setBorder(null);
+        errors.setLayout(new BoxLayout(errors, BoxLayout.Y_AXIS));
 
-        var gbc = new GridBagConstraints();
-        gbc.weightx = 1;
-        gbc.weighty = 1;
-        gbc.fill = 1;
+        for(var text: texts) {
+            var testo = new SSLabel(text);
+            testo.setFont(SSWindow.PLAIN_FONT);
+            errors.add(testo);
 
-        add(errorsPanel, gbc);
+            var gbc = new GridBagConstraints();
 
-        var errorPanel = new SSPanel();
-        errorPanel.setBorder(BorderFactory.createLineBorder(SSWindow.DARK_GRAY, 1));
+            gbc.weightx = 1;
+            gbc.weighty = 1;
+            gbc.anchor = GridBagConstraints.NORTHWEST;
+            gbc.insets.set(40, 20, 20, 20);
 
-        gbc.weightx = 1;
-        gbc.weighty = .2;
+            add(errors, gbc);
+        }
 
-        var errorTextTitle = new SSLabel("ERRORE:");
-        errorTextTitle.setFont(new Font("Arial", Font.PLAIN, 40));
-        errorTextTitle.setForeground(Color.red);
-        errorPanel.add(errorTextTitle, gbc);
-
-        gbc.weighty = .8;
-        gbc.gridy = 1;
-
-        var errorText = new SSTextArea("C'è stato un errore nel programma.");
-        errorText.setFont(SSWindow.PLAIN_FONT);
-        errorText.setLineWrap(false);
-        errorText.setWrapStyleWord(false);
-        errorPanel.add(errorText, gbc);
-
-        errorsPanel.add(errorPanel);
+        setVisible(true);
     }
 }
