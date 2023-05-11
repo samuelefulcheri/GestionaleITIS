@@ -15,13 +15,12 @@ public class DataBase {
     }
 
     public void create(@NotNull StorageObject object) throws SQLException {
-        var sql = "INSERT INTO PRODUCT (productContent, contentDescription, productHeight, productWidth, productType) VALUES (?, ?, ?, ?, ?)";
+        var sql = "INSERT INTO PRODUCT (contentDescription, productHeight, productWidth, productType) VALUES (?, ?, ?, ?)";
         var stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, object.content().id());
-        stmt.setString(2, object.contentDescription());
-        stmt.setInt(3, object.sizeX());
+        stmt.setString(1, object.contentDescription());
+        stmt.setInt(2, object.sizeX());
         stmt.setInt(3, object.sizeY());
-        stmt.setString(5, object.type().toString());
+        stmt.setString(4, object.type().toString());
         stmt.executeUpdate();
     }
 
@@ -67,13 +66,12 @@ public class DataBase {
     }
 
     public void update(@NotNull StorageObject object) throws SQLException {
-        var sql = "UPDATE PRODUCT SET productContent = ?, contentDescription = ?, productHeight = ?, productWidth = ?, productType = ? WHERE productId = ?";
+        var sql = "UPDATE PRODUCT SET contentDescription = ?, productHeight = ?, productWidth = ?, productType = ? WHERE productId = ?";
         var stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, object.content().id());
-        stmt.setString(2, object.contentDescription());
-        stmt.setInt(3, object.sizeX());
+        stmt.setString(1, object.contentDescription());
+        stmt.setInt(2, object.sizeX());
         stmt.setInt(3, object.sizeY());
-        stmt.setString(5, object.type().toString());
+        stmt.setString(4, object.type().toString());
         stmt.executeUpdate();
     }
 
