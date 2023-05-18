@@ -24,7 +24,6 @@ public class StoragePage extends SSPanel {
         var object = new StorageObject(1, null, "penne", 2, 3, StorageObjectType.IMPORT);
         var shelf = new StorageShelf(1, 5, 5);
 
-        // TODO: Errore
         if(!shelf.addObject(object)){
             SSWindow.errorsPage.addErrors("Errore nell'aggiunta dell'oggetto nel magazzino");
             return;
