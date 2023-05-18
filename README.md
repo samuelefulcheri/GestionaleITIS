@@ -330,11 +330,15 @@ un'interfaccia utente intuitiva.
   - Creazione tabelle in entrata, in uscita e stock -> 13 -> 5P
   - Gestione CRUD dei dati -> 20 -> 3P
   - Inserimento dati -> 40 -> 20P
-* Gestione spazio / Engine: -> 40 -> 61P (tot)
+* Gestione spazio / Engine: -> 40 -> 111P (tot)
   - Creazione di oggetti (scaffale, prodotti) -> 0 -> 20P
   - Creazione di metodi e proprietà degli oggetti -> 3 -> 13P
   - Generazione di errori e notifiche per i vari casi -> 40 -> 8P
   - Aggiunta Socket -> 100 -> 20P
+  - Accesso utente all'engine -> 5 -> 5P
+  - Permission ruoli -> 13 -> 5P
+  - Client -> 8 -> 20P
+  - Server -> 20 -> 20P
 
 
 # SEZIONE 6 - Stima delle risorse

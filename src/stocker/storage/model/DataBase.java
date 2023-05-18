@@ -59,6 +59,7 @@ public class DataBase {
         return stmt.executeQuery(sql);
     }
 
+
     public ResultSet read(String email, String password) throws SQLException {
         var sql = "SELECT * FROM ACCOUNT WHERE accountEmail = '" + email + "' AND accountPassword = '" + password + "'";
         var stmt = conn.createStatement();
