@@ -5,6 +5,7 @@ import stocker.storage.Main;
 import stocker.storage.model.DataBase;
 import stocker.storage.model.objects.AccountRanks;
 import stocker.storage.model.objects.StorageAccount;
+import stocker.storage.view.SSWindow;
 
 public class Login {
     public static boolean login(String email, String password) {
@@ -29,6 +30,7 @@ public class Login {
             db.closeConnection();
             return true;
         }catch(Exception e) {
+            SSWindow.errorsPage.addErrors("errore nel Login!!!");
             return false;
         }
     }

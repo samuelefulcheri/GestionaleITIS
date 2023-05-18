@@ -27,8 +27,6 @@ public class RegistrationPage extends SSPanel {
         var registrati = new SSTextArea("Registrati");
         registrati.setLineWrap(false);
 
-        gbc.gridy = 0;
-        gbc.gridx = 0;
         gbc.fill = 1;
         gbc.insets.set(10, 10, 10, 10);
         gbc.gridwidth = 4;
@@ -109,10 +107,17 @@ public class RegistrationPage extends SSPanel {
             password = Login.encode(password);
 
             if(Login.register(safeName, email, password)) {
+                SSWindow.notificationsPage.addNotifications("Registrazione effettuata!", "Benvenuto " + name + "!");
                 new Message("Registrazione effettuata!", "Benvenuto " + name + "!", true);
                 SSWindow.currentStatus = Pages.LOGIN_PAGE;
                 SSWindow.cambiaPagina();
-            }else new Message("E-Mail o Password errate.");
-        }else new Message(errorMessages);
+            }else{
+                SSWindow.notificationsPage.addNotifications("E-Mail o Password errate.");
+                new Message("E-Mail o Password errate.");
+            }
+        }else{
+            SSWindow.errorsPage.addErrors(errorMessages);
+            new Message(errorMessages);
+        }
     }
 }
