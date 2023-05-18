@@ -17,8 +17,8 @@ public class SSWindow extends JFrame {
     public static final Color LIGHT_GRAY = new Color(64, 68, 75);
     public static final Color LIGHTER_GRAY = new Color(88, 91, 97);
 
-    public static final Font PLAIN_FONT = new Font("ArialBold", Font.PLAIN, 18);
-    public static final Font TITLE_FONT = new Font("ArialBold", Font.BOLD, 100);
+    public static final Font PLAIN_FONT = new Font("SogoeUI", Font.PLAIN, 18);
+    public static final Font TITLE_FONT = new Font("SogoeUI", Font.PLAIN, 100);
 
     public static final Border SS_BORDER = BorderFactory.createLineBorder(SSWindow.DARK_GRAY);
 
@@ -27,10 +27,10 @@ public class SSWindow extends JFrame {
     public static Pages currentStatus;
     private static Pages previousStatus;
 
-    public static WelcomePage welcomePage;
-    public static StoragePage storagePage;
-    public static RegistrationPage registrationPage;
-    public static LoginPage loginPage;
+    private static WelcomePage welcomePage;
+    private static StoragePage storagePage;
+    private static RegistrationPage registrationPage;
+    private static LoginPage loginPage;
     public static ErrorsPage errorsPage = new ErrorsPage();
     public static NotificationsPage notificationsPage = new NotificationsPage();
 

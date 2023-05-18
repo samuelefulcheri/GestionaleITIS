@@ -9,6 +9,7 @@ public class NotificationsPage extends SSPanel {
     private static final int NOTIFICATION_WIDTH = 200;
     private static final int NOTIFICATION_HEIGHT = 300;
 
+
     public void addNotifications(String @NotNull ...texts) {
         setSize(NOTIFICATION_WIDTH, NOTIFICATION_HEIGHT);
 
@@ -25,6 +26,7 @@ public class NotificationsPage extends SSPanel {
 
             gbc.weightx = 1;
             gbc.weighty = 1;
+            gbc.gridx = 1;
             gbc.anchor = GridBagConstraints.NORTHWEST;
             gbc.insets.set(40, 20, 20, 20);
 

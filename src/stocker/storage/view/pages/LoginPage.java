@@ -30,23 +30,19 @@ public class LoginPage extends SSPanel {
 
         add(login, gbc);
 
-        var emailLabel = new SSLabel("Email:");
-
         gbc.gridy = 1;
         gbc.gridwidth = 1;
 
-        add(emailLabel, gbc);
+        add(new SSLabel("Email:"), gbc);
 
         emailField.setPreferredSize(new Dimension(0, 35));
         gbc.gridx = 1;
         add(emailField, gbc);
 
-        var passwordLabel = new SSLabel("Password:");
-
         gbc.gridx = 0;
         gbc.gridy = 2;
 
-        add(passwordLabel, gbc);
+        add(new SSLabel("Password:"), gbc);
 
         passwordField.setPreferredSize(new Dimension(0, 35));
         gbc.gridx = 1;
@@ -81,9 +77,13 @@ public class LoginPage extends SSPanel {
         var password = Login.encode(new String(passwordField.getPassword()));
 
         if(Login.login(email, password)) {
+            SSWindow.notificationsPage.addNotifications("Accesso effettuato", "Benvenuto " + Login.decode(Main.currentUser.name()) + "!");
             new Message("Accesso effettuato", "Benvenuto " + Login.decode(Main.currentUser.name()) + "!", true);
             SSWindow.currentStatus = Pages.WELCOME_PAGE;
             SSWindow.cambiaPagina();
-        }else new Message("E-Mail o Password errate.");
+        }else{
+            SSWindow.errorsPage.addErrors("Email o Password errate.");
+            new Message("E-Mail o Password errate.");
+        }
     }
 }
