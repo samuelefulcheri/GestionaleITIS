@@ -7,8 +7,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.io.File;
 import java.io.PrintWriter;
 
@@ -18,8 +17,8 @@ public class SSWindow extends JFrame {
     public static final Color LIGHT_GRAY = new Color(64, 68, 75);
     public static final Color LIGHTER_GRAY = new Color(88, 91, 97);
 
-    public static final Font PLAIN_FONT = new Font("ArialBold", Font.PLAIN, 18);
-    public static final Font TITLE_FONT = new Font("ArialBold", Font.BOLD, 100);
+    public static final Font PLAIN_FONT = new Font("SogoeUI", Font.PLAIN, 18);
+    public static final Font TITLE_FONT = new Font("SogoeUI", Font.PLAIN, 100);
 
     public static final Border SS_BORDER = BorderFactory.createLineBorder(SSWindow.DARK_GRAY);
 
@@ -28,10 +27,10 @@ public class SSWindow extends JFrame {
     public static Pages currentStatus;
     private static Pages previousStatus;
 
-    public static WelcomePage welcomePage;
-    public static StoragePage storagePage;
-    public static RegistrationPage registrationPage;
-    public static LoginPage loginPage;
+    private static WelcomePage welcomePage;
+    private static StoragePage storagePage;
+    private static RegistrationPage registrationPage;
+    private static LoginPage loginPage;
     public static ErrorsPage errorsPage = new ErrorsPage();
     public static NotificationsPage notificationsPage = new NotificationsPage();
 
@@ -40,44 +39,48 @@ public class SSWindow extends JFrame {
         setSize(800, 500);
         setLocationRelativeTo(null);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setLayout(new GridBagLayout());
+        setLayout(new BorderLayout());
         getContentPane().setBackground(GRAY);
 
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                try {
-                    var newFile = new PrintWriter("saves\\user" + Main.extension);
+                try(var newFile = new PrintWriter("saves\\user" + Main.extension)) {
                     newFile.print(Main.currentUser);
-                    newFile.close();
                 }catch(Exception ignored) { }
 
                 System.exit(0);
             }
         });
 
-        var buttonsPanel = new ButtonsPanel();
-        var gbc = new GridBagConstraints();
+        var screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 
-        gbc.weightx = 0.15;
-        gbc.weighty = 1;
-        gbc.fill = 1;
-        add(buttonsPanel, gbc);
+        var buttonsPanel = new ButtonsPanel();
+        buttonsPanel.setPreferredSize(new Dimension((int) (screenWidth*.2), 0));
+        add(buttonsPanel, BorderLayout.WEST);
 
         componentPanel = new SSPanel();
         componentPanel.setBorder(null);
 
-        gbc.gridx = 1;
-        gbc.weightx = 0.85;
-        gbc.insets.set(5, 0, 5, 5);
-        add(componentPanel, gbc);
-
         var scroll = new SSScrollPane(componentPanel);
+        scroll.setPreferredSize(new Dimension((int) (screenWidth*.8), 0));
 
-        gbc.weightx = 1;
-        gbc.insets.set(0, 0, 0, 0);
+        add(scroll);
 
-        add(scroll, gbc);
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                var width = getWidth();
+                buttonsPanel.setPreferredSize(new Dimension((int) (width*.2), 0));
+                scroll.setPreferredSize(new Dimension((int) (width*.8), 0));
+            }
+        });
+
+        addWindowStateListener(e -> {
+            var width = getSize().width;
+            buttonsPanel.setPreferredSize(new Dimension((int) (width*.2), 0));
+            scroll.setPreferredSize(new Dimension((int) (width*.8), 0));
+        });
 
         try{
             var image = ImageIO.read(new File("saves\\icon.png"));

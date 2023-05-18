@@ -7,15 +7,18 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class SSButton extends JButton {
-    private Color color = SSWindow.LIGHT_GRAY;
+    private Color color;
 
     public SSButton() {
         super();
+
+        color = SSWindow.LIGHT_GRAY;
         setBackground(color);
         setBorder(SSWindow.SS_BORDER);
         setForeground(Color.white);
         setFont(SSWindow.PLAIN_FONT);
         setFocusable(false);
+
         setUI(new BasicButtonUI() {
             @Override
             protected void paintButtonPressed(Graphics g, AbstractButton button) {
@@ -42,5 +45,6 @@ public class SSButton extends JButton {
 
     public void setColor(Color color) {
         this.color = color;
+        setBackground(color);
     }
 }
