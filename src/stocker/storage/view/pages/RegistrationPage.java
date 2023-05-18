@@ -27,8 +27,6 @@ public class RegistrationPage extends SSPanel {
         var registrati = new SSTextArea("Registrati");
         registrati.setLineWrap(false);
 
-        gbc.gridy = 0;
-        gbc.gridx = 0;
         gbc.fill = 1;
         gbc.insets.set(10, 10, 10, 10);
         gbc.gridwidth = 4;
