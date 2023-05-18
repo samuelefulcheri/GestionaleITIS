@@ -7,6 +7,8 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class SSStoragePanel extends JPanel {
+    private int[] size = { 0, 0 };
+
     public SSStoragePanel() {
         super();
         setBackground(SSWindow.LIGHT_GRAY);
@@ -54,7 +56,11 @@ public class SSStoragePanel extends JPanel {
         var shelf = storage.getShelf();
 
         var shelfPanel = buildShelf(shelf.length, shelf[0].length, storage);
-        setPreferredSize(shelfPanel, getHeight(), getWidth());
+
+        size[0] += getHeight();
+        size[1] += getWidth();
+
+        setPreferredSize(shelfPanel, size[0], size[1]);
         add(shelfPanel);
     }
 
@@ -73,9 +79,9 @@ public class SSStoragePanel extends JPanel {
             objectPanel.setBackground(SSWindow.LIGHTER_GRAY);
 
             jx = (i%x == 0) ? 0 : jx+1;
-            if(i%x == 0 && i != 0) jy++;
+            if(i%y == 0 && i != 0) jy++;
 
-            objectPanel.setUsed(shelf.isUsed(jx, jy));
+            //objectPanel.setUsed(shelf.isUsed(jx, jy));
 
             if(objectPanel.isUsed()) {
                 var label = new SSLabel("Used");
@@ -93,47 +99,6 @@ public class SSStoragePanel extends JPanel {
                 public void mouseExited(MouseEvent e) {
                     var thisPanel = (SSRoundPanel) e.getSource();
                     thisPanel.setBackground(SSWindow.LIGHTER_GRAY);
-                }
-            });
-
-            var toolTip = new SSToolTip();
-            toolTip.setTipText("Used");
-
-            objectPanel.addMouseMotionListener(new MouseMotionAdapter() {
-                private Timer timer;
-                private int px;
-                private int py;
-
-                @Override
-                public void mouseMoved(MouseEvent e) {
-                    var x = e.getX();
-                    var y = e.getY();
-
-                    var thisPanel = (SSRoundPanel) e.getSource();
-                    if(thisPanel.isUsed() && (px != e.getX() || py != e.getY())) {
-                        if(thisPanel.isUsed()) thisPanel.remove(toolTip);
-                        thisPanel.revalidate();
-                    }
-
-                    if(timer == null || !timer.isRunning()) {
-                        timer = new Timer(500, e1 -> {
-                            timer.stop();
-
-                            Rectangle area = objectPanel.getBounds();
-                            if(area.contains(e.getX(), e.getY())) {
-                                if(thisPanel.isUsed() && (x == e.getX() && y == e.getY())) {
-                                    thisPanel.setLayout(null);
-                                    toolTip.setBounds(x, y, 50, 50);
-                                    thisPanel.add(toolTip);
-                                    thisPanel.revalidate();
-
-                                    px = x;
-                                    py = y;
-                                }
-                            }
-                        }); timer.setRepeats(false);
-                        timer.start();
-                    }
                 }
             });
 

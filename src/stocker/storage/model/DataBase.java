@@ -1,10 +1,12 @@
 package stocker.storage.model;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import stocker.storage.model.objects.DBTables;
 import stocker.storage.model.objects.StorageAccount;
 import stocker.storage.model.objects.StorageObject;
 import stocker.storage.model.objects.StorageShelf;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DataBase {
     private final Connection conn;
@@ -63,6 +65,28 @@ public class DataBase {
         var sql = "SELECT * FROM ACCOUNT WHERE accountEmail = '" + email + "' AND accountPassword = '" + password + "'";
         var stmt = conn.createStatement();
         return stmt.executeQuery(sql);
+    }
+
+    public static @Nullable ArrayList<StorageShelf> readShelf() {
+        try{
+            var database = new DataBase();
+
+            var res = database.read(DBTables.SHELF);
+            ArrayList<StorageShelf> shelves = new ArrayList<>();
+
+            while(res.next())
+                shelves.add(new StorageShelf(
+                        res.getInt("shelfId"),
+                        res.getInt("shelfHeight"),
+                        res.getInt("shelfWidth")
+                ));
+
+            database.closeConnection();
+            return shelves;
+        }catch(Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public void update(@NotNull StorageObject object) throws SQLException {
