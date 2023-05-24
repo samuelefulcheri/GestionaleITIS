@@ -1,41 +1,33 @@
 package stocker.storage.view.pages;
-
 import org.jetbrains.annotations.NotNull;
-import stocker.storage.view.SSWindow;
-import stocker.storage.view.component.SSLabel;
-import stocker.storage.view.component.SSPanel;
-
-import javax.swing.*;
+import stocker.storage.view.component.SSTextArea;
 import java.awt.*;
 
-public class ErrorsPage extends SSPanel {
-    private static final int ERRORS_WIDTH = 200;
-    private static final int ERRORS_HEIGHT = 300;
+public class ErrorsPage extends MessagePage {
+    public ErrorsPage() {
+        defaultClass();
+    }
 
-    public void addErrors(String @NotNull ...texts) {
-        setSize(ERRORS_WIDTH, ERRORS_HEIGHT);
+    private void defaultClass() {
+        var gbc = new GridBagConstraints();
 
-        var errors = new SSPanel();
-        errors.setBorder(null);
-        errors.setLayout(new BoxLayout(errors, BoxLayout.Y_AXIS));
+        gbc.fill = 1;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        gbc.insets.set(150, 50, 0, 0);
 
-        for(var text: texts) {
-            var testo = new SSLabel(text);
-            testo.setFont(SSWindow.PLAIN_FONT);
-            testo.setForeground(Color.RED);
-            errors.add(testo);
+        var basicText = new SSTextArea("Al momento tutto sembra funzionare correttamente...");
+        basicText.setAutoLineWrap(true);
 
-            var gbc = new GridBagConstraints();
+        add(basicText, gbc);
+    }
 
-            gbc.weightx = 1;
-            gbc.gridx = 1;
-            gbc.weighty = 1;
-            gbc.anchor = GridBagConstraints.NORTHWEST;
-            gbc.insets.set(40, 20, 20, 20);
+    public int addErrors(String @NotNull ...texts) {
+        return addMessage(texts);
+    }
 
-            add(errors, gbc);
-        }
-
-        setVisible(true);
+    public void removeError(int id) {
+        removeMessage(id);
+        if(!containsMessages()) defaultClass();
     }
 }

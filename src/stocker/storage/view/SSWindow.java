@@ -91,7 +91,6 @@ public class SSWindow extends JFrame {
     }
 
     public void welcomePage() {
-        previousStatus = Pages.WELCOME_PAGE;
         currentStatus = Pages.WELCOME_PAGE;
         cambiaPagina();
     }
@@ -99,24 +98,16 @@ public class SSWindow extends JFrame {
     public static void cambiaPagina() {
         JComponent component;
 
-        try{
-            switch(previousStatus) {
-                case WELCOME_PAGE -> componentPanel.remove(welcomePage);
-                case STORAGE_PAGE -> componentPanel.remove(storagePage);
-                case REGISTRATION_PAGE -> componentPanel.remove(registrationPage);
-                case LOGIN_PAGE -> componentPanel.remove(loginPage);
-                case ERRORS_PAGE -> componentPanel.remove(errorsPage);
-                case NOTIFICATIONS_PAGE -> componentPanel.remove(notificationsPage);
-                default -> {
-                    System.out.println("Errore: previousStatus = " + previousStatus);
-                    return;
-                }
-            }
-        }catch(Exception e) {
-            if(previousStatus != Pages.WELCOME_PAGE) {
-                System.out.println("Errore");
-                System.out.println("previousPage: " + previousStatus);
-                System.out.println("currentPage: " + currentStatus);
+        switch(previousStatus) {
+            case WELCOME_PAGE -> componentPanel.remove(welcomePage);
+            case STORAGE_PAGE -> componentPanel.remove(storagePage);
+            case REGISTRATION_PAGE -> componentPanel.remove(registrationPage);
+            case LOGIN_PAGE -> componentPanel.remove(loginPage);
+            case ERRORS_PAGE -> componentPanel.remove(errorsPage);
+            case NOTIFICATIONS_PAGE -> componentPanel.remove(notificationsPage);
+            case null -> { }
+            default -> {
+                System.out.println("Errore: previousStatus = " + previousStatus);
                 return;
             }
         }
@@ -158,5 +149,6 @@ public class SSWindow extends JFrame {
 
         componentPanel.add(component, gbc);
         Main.window.setVisible(true);
+        Main.window.repaint();
     }
 }

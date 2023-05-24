@@ -1,4 +1,5 @@
 package stocker.storage.view;
+import stocker.storage.Main;
 import stocker.storage.view.component.SSButton;
 import stocker.storage.view.component.SSPanel;
 import stocker.storage.view.pages.Pages;
@@ -60,6 +61,9 @@ public class ButtonsPanel extends SSPanel {
             if(SSWindow.currentStatus != Pages.ERRORS_PAGE) {
                 SSWindow.currentStatus = Pages.ERRORS_PAGE;
                 SSWindow.cambiaPagina();
+            }else{
+                Main.window.setVisible(true);
+                Main.window.repaint();
             }
         });
 
@@ -73,6 +77,9 @@ public class ButtonsPanel extends SSPanel {
             if(SSWindow.currentStatus != Pages.NOTIFICATIONS_PAGE) {
                 SSWindow.currentStatus = Pages.NOTIFICATIONS_PAGE;
                 SSWindow.cambiaPagina();
+            }else{
+                Main.window.setVisible(true);
+                Main.window.repaint();
             }
         });
 

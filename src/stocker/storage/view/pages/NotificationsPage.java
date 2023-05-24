@@ -1,38 +1,33 @@
 package stocker.storage.view.pages;
 import org.jetbrains.annotations.NotNull;
-import stocker.storage.view.SSWindow;
-import stocker.storage.view.component.*;
-import javax.swing.*;
+import stocker.storage.view.component.SSTextArea;
 import java.awt.*;
 
-public class NotificationsPage extends SSPanel {
-    private static final int NOTIFICATION_WIDTH = 200;
-    private static final int NOTIFICATION_HEIGHT = 300;
+public class NotificationsPage extends MessagePage {
+    public NotificationsPage() {
+        defaultClass();
+    }
 
+    private void defaultClass() {
+        var gbc = new GridBagConstraints();
 
-    public void addNotifications(String @NotNull ...texts) {
-        setSize(NOTIFICATION_WIDTH, NOTIFICATION_HEIGHT);
+        gbc.fill = 1;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        gbc.insets.set(150, 50, 0, 0);
 
-        var notification = new SSPanel();
-        notification.setBorder(null);
-        notification.setLayout(new BoxLayout(notification, BoxLayout.Y_AXIS));
+        var basicText = new SSTextArea("Nessuna notifica");
+        basicText.setAutoLineWrap(true);
 
-        for(var text: texts) {
-            var testo = new SSLabel(text);
-            testo.setFont(SSWindow.PLAIN_FONT);
-            notification.add(testo);
+        add(basicText, gbc);
+    }
 
-            var gbc = new GridBagConstraints();
+    public int addNotifications(String @NotNull ...texts) {
+        return addMessage(texts);
+    }
 
-            gbc.weightx = 1;
-            gbc.weighty = 1;
-            gbc.gridx = 1;
-            gbc.anchor = GridBagConstraints.NORTHWEST;
-            gbc.insets.set(40, 20, 20, 20);
-
-            add(notification, gbc);
-        }
-
-        setVisible(true);
+    public void removeNotification(int id) {
+        removeMessage(id);
+        if(!containsMessages()) defaultClass();
     }
 }

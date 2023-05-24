@@ -13,8 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
         // Ricorda i dati di accesso dell'utente
-        try{
-            var input = new Scanner(new File("saves\\user" + extension));
+        try(var input = new Scanner(new File("saves\\user" + extension))){
             var line = input.nextLine();
             var splitted = line.split(separator);
 
@@ -25,8 +24,6 @@ public class Main {
             var rank = AccountRanks.getRankFromString(splitted[4]);
 
             currentUser = new StorageAccount(id, name, email, password, rank);
-
-            input.close();
         }catch(Exception ignored) { }
 
 
@@ -34,5 +31,20 @@ public class Main {
 
         window = new SSWindow();
         window.welcomePage();
+
+
+        // Prova funzioni
+
+        {
+            var input = new Scanner(System.in);
+            input.nextLine();
+            var id = SSWindow.notificationsPage.addNotifications("Testo di esempio");
+            input.nextLine();
+            SSWindow.notificationsPage.removeNotification(id);
+            input.nextLine();
+            id = SSWindow.errorsPage.addErrors("Errore di esempio");
+            input.nextLine();
+            SSWindow.errorsPage.removeError(id);
+        }
     }
 }
