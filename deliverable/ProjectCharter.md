@@ -40,11 +40,11 @@
 #
 
 
-| PROJECT RESOURCES & COSTS |                                                                            |
-|---------------------------|----------------------------------------------------------------------------|
-| Project Team              | Fulcheri Samuele, Gonella Giacomo, Giannini Theodor, Moldovanu Kostantinos |
-| Support Resources         | Professori                                                                 |
-| Special Needs             | No                                                                         |
+| PROJECT RESOURCES & COSTS |                                                                                            |
+|---------------------------|--------------------------------------------------------------------------------------------|
+| Project Team              | Fulcheri Samuele, Gonella Giacomo, Giannini Theodor, Moldovanu Kostantinos, Simone Giletta |
+| Support Resources         | Professori                                                                                 |
+| Special Needs             | No                                                                                         |
 
 
 

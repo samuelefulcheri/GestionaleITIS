@@ -8,9 +8,10 @@ import java.sql.SQLException;
 public class LetturaDati {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         var db = new DataBase();
-        var res = db.read(DBTables.SHELF);
+        var res = db.read(DBTables.PRODUCT);
         while(res.next()){
-            System.out.println(res.getInt("shelfId"));
+            System.out.print(res.getInt("productId") + " ");
+            System.out.println(res.getString("contentDescription"));
         }
 
 
