@@ -21,7 +21,7 @@ public class Main {
             var name = splitted[1];
             var email = splitted[2];
             var password = splitted[3];
-            var rank = AccountRanks.getRankFromString(splitted[4]);
+            var rank = AccountRanks.valueOf(splitted[4].toUpperCase());
 
             currentUser = new StorageAccount(id, name, email, password, rank);
         }catch(Exception ignored) { }

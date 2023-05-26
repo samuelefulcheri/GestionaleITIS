@@ -15,19 +15,13 @@ public class Login {
             password = decode(password);
 
             var res = db.read(email, password);
-
-            var id = res.getInt("accountId");
-            var name = res.getString("accountName");
-            var resRank = res.getString("rank");
-            var rank = AccountRanks.getRankFromString(resRank);
-            if(rank == null) throw new Exception("Error");
-
-            Main.currentUser = new StorageAccount(id, name, email, password, rank);
+            if(res == null) return false;
+            Main.currentUser = res;
 
             // TODO: Accesso eseguito
 
-            res.close();
             db.closeConnection();
+
             return true;
         }catch(Exception e) {
             SSWindow.errorsPage.addErrors("errore nel Login!!!");
@@ -39,8 +33,10 @@ public class Login {
         try{
             var db = new DataBase();
             var account = new StorageAccount(0, name, email, password, AccountRanks.EMPLOYEE);
+
             db.create(account);
             db.closeConnection();
+
             return true;
         }catch(Exception e) {
             return false;

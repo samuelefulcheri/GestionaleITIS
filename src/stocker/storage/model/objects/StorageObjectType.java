@@ -1,17 +1,12 @@
 package stocker.storage.model.objects;
+import org.jetbrains.annotations.NotNull;
 
 public enum StorageObjectType {
-    IMPORT("import"),
-    EXPORT("export");
-
-    final String value;
-
-    StorageObjectType(String value) {
-        this.value = value;
-    }
+    IMPORT,
+    EXPORT;
 
     @Override
-    public String toString() {
-        return value;
+    public @NotNull String toString() {
+        return super.toString().toLowerCase();
     }
 }

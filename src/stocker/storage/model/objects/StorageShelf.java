@@ -1,4 +1,5 @@
 package stocker.storage.model.objects;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,9 +16,16 @@ public class StorageShelf {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         shelf = new boolean[sizeY][sizeX];
-        for(var y = 0; y < sizeY; y++)
-            Arrays.fill(shelf[y], true);
+        for(var y = 0; y < sizeY; y++) Arrays.fill(shelf[y], true);
         content = new ArrayList<>();
+    }
+
+    public StorageShelf(int id, int sizeX, int sizeY, boolean[][] shelf, ArrayList<StorageObject> content) {
+        this.id = id;
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
+        this.shelf = shelf;
+        this.content = content;
     }
 
     public boolean addObject(@NotNull StorageObject obj) {
@@ -34,8 +42,7 @@ public class StorageShelf {
 
     public ArrayList<StorageObject> getObjects(String search) {
         ArrayList<StorageObject> results = new ArrayList<>();
-        for(var obj: content)
-            if(obj.contentDescription().equals(search)) results.add(obj);
+        for(var obj: content) if(obj.contentDescription().equals(search)) results.add(obj);
 
         return results;
     }
@@ -57,14 +64,9 @@ public class StorageShelf {
     }
 
 
-    // Miscellaneous
-
     private int getUsage() {
         var i = 0;
-        for(var y = 0; y < sizeY; y++)
-            for(var x = 0; x < sizeX; x++)
-                if(isUsed(x, y)) i++;
-
+        for(var y = 0; y < sizeY; y++) for(var x = 0; x < sizeX; x++) if(isUsed(x, y)) i++;
         return i;
     }
 
@@ -98,5 +100,10 @@ public class StorageShelf {
     }
     private int getFree() {
         return sizeX*sizeY-getUsage();
+    }
+
+    @Contract("_ -> new")
+    public static @NotNull StorageShelf createFromId(int id) {
+        return new StorageShelf(id, 0, 0, null, null);
     }
 }
